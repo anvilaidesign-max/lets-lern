@@ -1,0 +1,14 @@
+{
+  "name": "daily-mind-content-pipeline",
+  "private": true,
+  "type": "module",
+  "description": "Validates, uploads and exports Daily Mind learning content. No dependencies; needs Node 22.18+.",
+  "engines": { "node": ">=22.18" },
+  "scripts": {
+    "validate": "node scripts/validate.ts",
+    "check-links": "node scripts/check-links.ts",
+    "upload": "node scripts/upload.ts",
+    "upload:verified": "node scripts/upload.ts --verified --offline-pack",
+    "export-seed": "node scripts/export-seed.ts"
+  }
+}

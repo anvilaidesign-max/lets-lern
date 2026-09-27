@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://daily-mind.app/schema/content_item.schema.json",
+  "title": "Daily Mind content item",
+  "description": "One learning item, as written by content agents (ARCHITECTURE.md 12). `id`, `verified` and `in_offline_pack` are set by the pipeline scripts.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["topic_code", "type", "title", "body"],
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "topic_code": { "enum": ["math", "english", "french", "science", "politics", "economics", "finance", "relations"] },
+    "type": { "enum": ["fact", "lesson", "challenge", "vocab", "phrase"] },
+    "title": { "type": "string", "minLength": 3, "maxLength": 59 },
+    "body": { "type": "string", "minLength": 3, "maxLength": 399 },
+    "statement": { "type": "string", "maxLength": 99 },
+    "is_true": { "type": "boolean" },
+    "correct_answer": { "type": "string", "maxLength": 200 },
+    "explanation": { "type": "string", "maxLength": 600 },
+    "term": { "type": "string", "maxLength": 120 },
+    "translation": { "type": "string", "maxLength": 200 },
+    "example_sentence": { "type": "string", "maxLength": 300 },
+    "difficulty": { "type": "integer", "minimum": 1, "maximum": 3 },
+    "source_name": { "type": "string", "maxLength": 200 },
+    "source_url": { "type": "string", "format": "uri", "pattern": "^https://" },
+    "verified": { "type": "boolean" },
+    "in_offline_pack": { "type": "boolean" },
+    "is_active": { "type": "boolean" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "type": { "const": "challenge" } } },
+      "then": { "required": ["statement", "is_true", "correct_answer", "explanation"] }
+    },
+    {
+      "if": { "properties": { "type": { "enum": ["vocab", "phrase"] } } },
+      "then": { "required": ["term"] }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": { "enum": ["fact", "lesson"] },
+          "topic_code": { "enum": ["science", "politics", "economics", "finance", "relations"] }
+        }
+      },
+      "then": { "required": ["source_name", "source_url"] }
+    }
+  ]
+}

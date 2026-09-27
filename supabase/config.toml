@@ -1,0 +1,13 @@
+project_id = "daily-mind"
+
+# Auth is checked inside each function (supabase.auth.getUser), so the
+# gateway JWT check is off. This also keeps working with the newer
+# publishable/secret API keys.
+[functions.score-essay]
+verify_jwt = false
+
+[functions.ai-game-turn]
+verify_jwt = false
+
+[functions.get-content-updates]
+verify_jwt = false

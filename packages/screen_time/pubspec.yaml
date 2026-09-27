@@ -1,0 +1,19 @@
+name: screen_time
+description: "Android screen time (UsageStatsManager) plugin for Daily Mind. Android only; iOS is not supported (see ARCHITECTURE.md 10.2)."
+version: 0.1.0
+publish_to: 'none'
+
+environment:
+  sdk: ^3.13.3
+  flutter: ">=3.44.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.dailymind.screentime
+        pluginClass: ScreenTimePlugin

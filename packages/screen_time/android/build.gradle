@@ -1,0 +1,55 @@
+group 'com.dailymind.screentime'
+version '1.0'
+
+buildscript {
+    ext.kotlin_version = '2.1.0'
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.11.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+def agpMajor = com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION.tokenize('.')[0] as int
+def builtInKotlinEnabled = project.findProperty('android.builtInKotlin')?.toString() == 'true'
+
+apply plugin: 'com.android.library'
+// AGP 9+ only registers Kotlin itself when android.builtInKotlin=true.
+if (agpMajor < 9 || !builtInKotlinEnabled) {
+    apply plugin: 'kotlin-android'
+}
+
+android {
+    namespace 'com.dailymind.screentime'
+    compileSdk 36
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        minSdk 24
+    }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+    }
+}
