@@ -12,6 +12,7 @@ class SyncEntity {
   static const progress = 'user_progress';
   static const activity = 'daily_activity';
   static const report = 'content_report';
+  static const chapterProgress = 'chapter_progress';
 }
 
 /// Writes local changes to the sync queue (ARCHITECTURE.md 7.2). Every write
@@ -36,6 +37,22 @@ class SyncQueueWriter {
         'topics': r.topics.split(',').where((s) => s.isNotEmpty).toList(),
         'items_completed': r.itemsCompleted,
       };
+
+  static Map<String, dynamic> chapterProgressPayload(ChapterProgressRow r) => {
+        'chapter_id': r.chapterId,
+        'read_at': r.readAt?.toUtc().toIso8601String(),
+        'best_score': r.bestScore,
+        'last_score': r.lastScore,
+        'attempts': r.attempts,
+        'total_questions': r.totalQuestions,
+      };
+
+  Future<void> chapterProgress(ChapterProgressRow row) => _dao.enqueue(
+        SyncEntity.chapterProgress,
+        row.chapterId,
+        jsonEncode(chapterProgressPayload(row)),
+        DateTime.now(),
+      );
 
   Future<void> progress(ProgressRow row) =>
       _dao.enqueue(SyncEntity.progress, row.itemId, jsonEncode(progressPayload(row)), DateTime.now());

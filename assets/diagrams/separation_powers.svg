@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+<rect x="0" y="0" width="800" height="450" rx="18" fill="#FFFFFF"/>
+<text x="400" y="38" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="bold" fill="#0F172A" text-anchor="middle">Separation of powers: checks and balances</text>
+<rect x="290" y="62" width="220" height="84" rx="12" fill="#DBEAFE" stroke="#2563EB" stroke-width="2.5"/><text x="400" y="102" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="bold" fill="#0F172A" text-anchor="middle">Legislature</text><text x="400" y="128" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="normal" fill="#64748B" text-anchor="middle">Parliament makes laws</text>
+<rect x="40" y="300" width="230" height="84" rx="12" fill="#FFEDD5" stroke="#F97316" stroke-width="2.5"/><text x="155" y="340" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="bold" fill="#0F172A" text-anchor="middle">Executive</text><text x="155" y="366" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="normal" fill="#64748B" text-anchor="middle">President and Cabinet</text>
+<rect x="530" y="300" width="230" height="84" rx="12" fill="#EDE9FE" stroke="#7C3AED" stroke-width="2.5"/><text x="645" y="340" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="bold" fill="#0F172A" text-anchor="middle">Judiciary</text><text x="645" y="366" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="normal" fill="#64748B" text-anchor="middle">courts interpret laws</text>
+<line x1="300" y1="150" x2="206.90934343149115" y2="282.1887323272826" stroke="#2563EB" stroke-width="3" stroke-linecap="round"/><polygon points="200,292 201.5,278.4 212.3,286" fill="#2563EB" stroke="none" stroke-width="0"/>
+<text x="170" y="205" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" fill="#2563EB" text-anchor="end">passes budget,</text>
+<text x="170" y="223" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" fill="#2563EB" text-anchor="end">can impeach</text>
+<line x1="230" y1="296" x2="323.09065656850885" y2="163.81126767271743" stroke="#F97316" stroke-width="3" stroke-linecap="round"/><polygon points="330,154 328.5,167.6 317.7,160" fill="#F97316" stroke="none" stroke-width="0"/>
+<text x="302" y="250" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" fill="#F97316" text-anchor="start">signs or</text>
+<text x="302" y="268" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" fill="#F97316" text-anchor="start">vetoes bills</text>
+<line x1="530" y1="322" x2="286" y2="322" stroke="#7C3AED" stroke-width="3" stroke-linecap="round"/><polygon points="274,322 286,315.4 286,328.6" fill="#7C3AED" stroke="none" stroke-width="0"/>
+<text x="400" y="312" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" fill="#7C3AED" text-anchor="middle">rules actions unlawful</text>
+<line x1="274" y1="362" x2="518" y2="362" stroke="#F97316" stroke-width="3" stroke-linecap="round"/><polygon points="530,362 518,368.6 518,355.4" fill="#F97316" stroke="none" stroke-width="0"/>
+<text x="400" y="382" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" fill="#F97316" text-anchor="middle">appoints judges</text>
+<line x1="580" y1="296" x2="496.42402087131643" y2="164.1356773747437" stroke="#7C3AED" stroke-width="3" stroke-linecap="round"/><polygon points="490,154 502,160.6 490.8,167.7" fill="#7C3AED" stroke="none" stroke-width="0"/>
+<text x="598" y="205" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" fill="#7C3AED" text-anchor="start">strikes down</text>
+<text x="598" y="223" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" fill="#7C3AED" text-anchor="start">unconstitutional laws</text>
+<text x="400" y="430" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" font-style="italic" fill="#64748B" text-anchor="middle">No branch holds all the power; each can limit the others.</text>
+</svg>

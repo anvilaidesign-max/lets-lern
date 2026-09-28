@@ -40,8 +40,16 @@ class AppTheme {
       brightness: brightness,
       primary: text,
       onPrimary: background,
+      primaryContainer: surface,
+      onPrimaryContainer: text,
       secondary: secondary,
       onSecondary: background,
+      // Selected tab indicator and chips: a soft grey pill with the ink colour
+      // on top (without these Flutter derives white-on-grey, which is invisible).
+      secondaryContainer: surface,
+      onSecondaryContainer: text,
+      tertiary: secondary,
+      onTertiary: background,
       error: error,
       onError: background,
       surface: background,
@@ -122,15 +130,26 @@ class AppTheme {
         style: TextButton.styleFrom(foregroundColor: text, textStyle: textTheme.labelLarge),
       ),
       chipTheme: ChipThemeData(
-        backgroundColor: background,
+        // Selected chips are solid ink with inverted text, like the buttons.
+        color: WidgetStateProperty.resolveWith(
+          (states) => states.contains(WidgetState.selected) ? text : background,
+        ),
         side: BorderSide(color: border),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.chip)),
-        labelStyle: textTheme.bodyMedium,
+        labelStyle: textTheme.bodyMedium!.copyWith(
+          color: WidgetStateColor.resolveWith(
+            (states) => states.contains(WidgetState.selected) ? background : text,
+          ),
+          fontWeight: FontWeight.w600,
+        ),
         showCheckmark: false,
       ),
       navigationBarTheme: NavigationBarThemeData(
         backgroundColor: background,
         indicatorColor: surface,
+        iconTheme: WidgetStateProperty.resolveWith(
+          (states) => IconThemeData(color: states.contains(WidgetState.selected) ? text : secondary),
+        ),
         elevation: 0,
         height: 68,
         labelTextStyle: WidgetStatePropertyAll(textTheme.bodySmall),

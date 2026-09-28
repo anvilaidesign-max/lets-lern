@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+<rect x="0" y="0" width="800" height="450" rx="18" fill="#FFFFFF"/>
+<text x="400" y="38" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="bold" fill="#0F172A" text-anchor="middle">Forces on a moving car: F = m × a</text>
+<line x1="40" y1="330" x2="760" y2="330" stroke="#64748B" stroke-width="3" stroke-linecap="round"/>
+<path d="M200,300 L200,250 Q205,235 225,232 L300,230 L340,190 Q350,182 365,182 L470,182 Q488,182 500,195 L540,232 L590,236 Q610,240 612,258 L612,300 Z" stroke="#2563EB" stroke-width="3" fill="#DBEAFE" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M355,196 L470,196 Q480,196 488,205 L515,232 L335,232 Z" stroke="#2563EB" stroke-width="2.5" fill="#FFFFFF" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="270" cy="305" r="26" fill="#0F172A" stroke="#0F172A" stroke-width="3"/>
+<circle cx="270" cy="305" r="10" fill="#E2E8F0" stroke="#E2E8F0" stroke-width="3"/>
+<circle cx="540" cy="305" r="26" fill="#0F172A" stroke="#0F172A" stroke-width="3"/>
+<circle cx="540" cy="305" r="10" fill="#E2E8F0" stroke="#E2E8F0" stroke-width="3"/>
+<line x1="612" y1="262" x2="722" y2="262" stroke="#16A34A" stroke-width="6" stroke-linecap="round"/><polygon points="740,262 722,271.9 722,252.1" fill="#16A34A" stroke="none" stroke-width="0"/>
+<text x="680" y="250" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" fill="#16A34A" text-anchor="middle">driving force</text>
+<line x1="200" y1="262" x2="108" y2="262" stroke="#DC2626" stroke-width="6" stroke-linecap="round"/><polygon points="90,262 108,252.1 108,271.9" fill="#DC2626" stroke="none" stroke-width="0"/>
+<text x="145" y="250" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" fill="#DC2626" text-anchor="middle">friction + drag</text>
+<line x1="405" y1="250" x2="405" y2="387" stroke="#7C3AED" stroke-width="6" stroke-linecap="round"/><polygon points="405,405 395.1,387 414.9,387" fill="#7C3AED" stroke="none" stroke-width="0"/>
+<text x="418" y="398" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" fill="#7C3AED" text-anchor="start">weight = m × g</text>
+<line x1="330" y1="330" x2="330" y2="176" stroke="#F97316" stroke-width="5" stroke-linecap="round"/><polygon points="330,160 338.8,176 321.2,176" fill="#F97316" stroke="none" stroke-width="0"/>
+<text x="318" y="178" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" fill="#F97316" text-anchor="end">reaction</text>
+<rect x="40" y="70" width="260" height="72" rx="12" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2.5"/>
+<text x="170" y="100" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="bold" fill="#0F172A" text-anchor="middle">Net force = 3600 N</text>
+<text x="170" y="126" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#64748B" text-anchor="middle">1200 kg car → a = 3 m/s²</text>
+<rect x="520" y="70" width="250" height="72" rx="12" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2.5"/>
+<text x="645" y="100" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="bold" fill="#0F172A" text-anchor="middle">Kinetic energy = ½mv²</text>
+<text x="645" y="126" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#DC2626" text-anchor="middle">double the speed → 4× energy</text>
+</svg>

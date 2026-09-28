@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+<rect x="0" y="0" width="800" height="450" rx="18" fill="#FFFFFF"/>
+<text x="400" y="38" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="bold" fill="#0F172A" text-anchor="middle">AC: peak, RMS and the power triangle</text>
+<line x1="50" y1="230" x2="440" y2="230" stroke="#E2E8F0" stroke-width="2" stroke-linecap="round"/>
+<line x1="60" y1="90" x2="60" y2="370" stroke="#E2E8F0" stroke-width="2" stroke-linecap="round"/>
+<polyline points="60.0,230.0 62.3,220.6 64.6,211.2 66.9,202.0 69.3,192.9 71.6,184.1 73.9,175.5 76.2,167.3 78.5,159.5 80.8,152.1 83.1,145.1 85.4,138.8 87.8,132.9 90.1,127.7 92.4,123.1 94.7,119.1 97.0,115.9 99.3,113.3 101.6,111.5 103.9,110.4 106.3,110.0 108.6,110.4 110.9,111.5 113.2,113.3 115.5,115.9 117.8,119.1 120.1,123.1 122.4,127.7 124.8,132.9 127.1,138.8 129.4,145.1 131.7,152.1 134.0,159.5 136.3,167.3 138.6,175.5 140.9,184.1 143.3,192.9 145.6,202.0 147.9,211.2 150.2,220.6 152.5,230.0 154.8,239.4 157.1,248.8 159.4,258.0 161.8,267.1 164.1,275.9 166.4,284.5 168.7,292.7 171.0,300.5 173.3,307.9 175.6,314.9 177.9,321.2 180.3,327.1 182.6,332.3 184.9,336.9 187.2,340.9 189.5,344.1 191.8,346.7 194.1,348.5 196.4,349.6 198.8,350.0 201.1,349.6 203.4,348.5 205.7,346.7 208.0,344.1 210.3,340.9 212.6,336.9 214.9,332.3 217.3,327.1 219.6,321.2 221.9,314.9 224.2,307.9 226.5,300.5 228.8,292.7 231.1,284.5 233.4,275.9 235.8,267.1 238.1,258.0 240.4,248.8 242.7,239.4 245.0,230.0 247.3,220.6 249.6,211.2 251.9,202.0 254.3,192.9 256.6,184.1 258.9,175.5 261.2,167.3 263.5,159.5 265.8,152.1 268.1,145.1 270.4,138.8 272.8,132.9 275.1,127.7 277.4,123.1 279.7,119.1 282.0,115.9 284.3,113.3 286.6,111.5 288.9,110.4 291.3,110.0 293.6,110.4 295.9,111.5 298.2,113.3 300.5,115.9 302.8,119.1 305.1,123.1 307.4,127.7 309.8,132.9 312.1,138.8 314.4,145.1 316.7,152.1 319.0,159.5 321.3,167.3 323.6,175.5 325.9,184.1 328.3,192.9 330.6,202.0 332.9,211.2 335.2,220.6 337.5,230.0 339.8,239.4 342.1,248.8 344.4,258.0 346.8,267.1 349.1,275.9 351.4,284.5 353.7,292.7 356.0,300.5 358.3,307.9 360.6,314.9 362.9,321.2 365.3,327.1 367.6,332.3 369.9,336.9 372.2,340.9 374.5,344.1 376.8,346.7 379.1,348.5 381.4,349.6 383.8,350.0 386.1,349.6 388.4,348.5 390.7,346.7 393.0,344.1 395.3,340.9 397.6,336.9 399.9,332.3 402.3,327.1 404.6,321.2 406.9,314.9 409.2,307.9 411.5,300.5 413.8,292.7 416.1,284.5 418.4,275.9 420.8,267.1 423.1,258.0 425.4,248.8 427.7,239.4 430.0,230.0" stroke="#2563EB" stroke-width="4" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="60" y1="110" x2="440" y2="110" stroke="#DC2626" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="8 6"/>
+<text x="445" y="106" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#DC2626" text-anchor="start">peak 325 V</text>
+<line x1="60" y1="145" x2="440" y2="145" stroke="#16A34A" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="8 6"/>
+<text x="445" y="150" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#16A34A" text-anchor="start">RMS 230 V</text>
+<line x1="60" y1="395" x2="233" y2="395" stroke="#64748B" stroke-width="2" stroke-linecap="round"/><polygon points="245,395 233,401.6 233,388.4" fill="#64748B" stroke="none" stroke-width="0"/>
+<line x1="245" y1="395" x2="72" y2="395" stroke="#64748B" stroke-width="2" stroke-linecap="round"/><polygon points="60,395 72,388.4 72,401.6" fill="#64748B" stroke="none" stroke-width="0"/>
+<text x="152" y="418" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#64748B" text-anchor="middle">one cycle = 20 ms (50 Hz)</text>
+<text x="250" y="440" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" fill="#0F172A" text-anchor="middle">V_rms = V_peak ÷ √2</text>
+<polygon points="560,340 760,340 760,180" fill="#FEF9C3" stroke="none" stroke-width="0"/>
+<line x1="560" y1="340" x2="760" y2="340" stroke="#16A34A" stroke-width="5" stroke-linecap="round"/>
+<line x1="760" y1="340" x2="760" y2="180" stroke="#7C3AED" stroke-width="5" stroke-linecap="round"/>
+<line x1="560" y1="340" x2="760" y2="180" stroke="#F97316" stroke-width="5" stroke-linecap="round"/>
+<path d="M610,340 A50,50 0 0,0 599,309" stroke="#0F172A" stroke-width="2" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="625" y="326" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="bold" fill="#0F172A" text-anchor="middle">φ</text>
+<text x="660" y="368" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#16A34A" text-anchor="middle">P real power (W)</text>
+<text x="770" y="265" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="bold" fill="#7C3AED" text-anchor="start">Q</text>
+<text x="770" y="285" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" fill="#7C3AED" text-anchor="start">(var)</text>
+<text x="630" y="245" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" fill="#F97316" text-anchor="middle">S (VA)</text>
+<text x="660" y="404" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" fill="#0F172A" text-anchor="middle">power factor = P ÷ S = cos φ</text>
+</svg>

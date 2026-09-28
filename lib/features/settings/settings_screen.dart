@@ -5,10 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import '../../core/config/legal.dart';
 import '../../core/theme/tokens.dart';
 import '../../core/utils/date_utils.dart';
 import '../../core/utils/logger.dart';
+import '../../data/local/database.dart';
 import '../../data/remote/supabase_service.dart';
 import '../../data/repositories/auth_repository.dart';
 import '../../data/repositories/daily_plan_repository.dart';
@@ -21,6 +24,7 @@ import '../../platform/notification_service.dart';
 import '../../platform/screen_time_channel.dart';
 import '../common/widgets.dart';
 import '../home/home_providers.dart';
+import '../profile/profile_avatar.dart';
 import '../screen_time/screen_time_card.dart';
 
 /// Settings (ARCHITECTURE.md 11.2 #10).
@@ -44,6 +48,67 @@ class SettingsScreen extends ConsumerWidget {
     if (picked != null) await _set(ref, key, ClockTime(picked.hour, picked.minute).toString());
   }
 
+  Future<void> _open(String url) async {
+    await launchUrl(Uri.parse(url), mode: LaunchMode.inAppBrowserView).catchError((_) => false);
+  }
+
+  Future<void> _deleteAccount(BuildContext context, WidgetRef ref) async {
+    final controller = TextEditingController();
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => StatefulBuilder(
+        builder: (context, setState) => AlertDialog(
+          title: const Text('Delete your account?'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text('This permanently deletes your account, progress, essays and AI tutor history. It cannot be undone.'),
+              const SizedBox(height: AppSpacing.md),
+              const Text('Type DELETE to confirm.'),
+              const SizedBox(height: AppSpacing.sm),
+              TextField(controller: controller, autofocus: true, onChanged: (_) => setState(() {})),
+            ],
+          ),
+          actions: [
+            TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Cancel')),
+            TextButton(
+              onPressed: controller.text.trim() == 'DELETE' ? () => Navigator.pop(context, true) : null,
+              child: const Text('Delete forever'),
+            ),
+          ],
+        ),
+      ),
+    );
+    controller.dispose();
+    if (confirmed != true || !context.mounted) return;
+    showMessage(context, 'Deleting your account…');
+    final result = await ref.read(authRepositoryProvider).deleteAccount();
+    if (!context.mounted) return;
+    result.when(
+      success: (_) => showMessage(context, 'Your account has been deleted.'),
+      failure: (e) => showError(context, e),
+    );
+  }
+
+  Future<void> _resetPhone(BuildContext context, WidgetRef ref) async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Reset this phone?'),
+        content: const Text('Your profile, progress, essays and settings on this phone will be removed and the app will start again. If you are signed in, your account data stays safe online.'),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Cancel')),
+          TextButton(onPressed: () => Navigator.pop(context, true), child: const Text('Reset')),
+        ],
+      ),
+    );
+    if (confirmed != true) return;
+    await ref.read(authRepositoryProvider).signOut();
+    await ref.read(databaseProvider).clearUserData();
+    await ref.read(settingsProvider.notifier).resetAll();
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final s = ref.watch(settingsProvider);
@@ -56,12 +121,38 @@ class SettingsScreen extends ConsumerWidget {
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
         children: [
+          const SizedBox(height: AppSpacing.md),
+          AppCard(
+            onTap: () => context.push('/profile'),
+            child: Row(
+              children: [
+                const ProfileAvatarView(size: 52),
+                const SizedBox(width: AppSpacing.md),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        s.profileName.isNotEmpty ? s.profileName : (user?.userMetadata?['full_name'] as String? ?? 'Set up your profile'),
+                        style: theme.textTheme.titleMedium,
+                      ),
+                      Text(
+                        s.profileField.isNotEmpty ? '${s.profileField} · ${s.level.label}' : 'Name, picture, what you study, level',
+                        style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+                      ),
+                    ],
+                  ),
+                ),
+                const Icon(Icons.chevron_right),
+              ],
+            ),
+          ),
           const SectionTitle('Appearance'),
           SegmentedButton<ThemeMode>(
             segments: const [
               ButtonSegment(value: ThemeMode.light, label: Text('Light')),
               ButtonSegment(value: ThemeMode.dark, label: Text('Dark')),
-              ButtonSegment(value: ThemeMode.system, label: Text('System')),
+              ButtonSegment(value: ThemeMode.system, label: Text('Phone')),
             ],
             selected: {s.themeMode},
             onSelectionChanged: (v) => ref.read(settingsProvider.notifier).set(SettingKeys.themeMode, AppSettings.themeModeValue(v.first)),
@@ -106,7 +197,8 @@ class SettingsScreen extends ConsumerWidget {
             segments: const [
               ButtonSegment(value: TopicsPerDay.one, label: Text('1')),
               ButtonSegment(value: TopicsPerDay.two, label: Text('2')),
-              ButtonSegment(value: TopicsPerDay.random, label: Text('Random')),
+              ButtonSegment(value: TopicsPerDay.three, label: Text('3')),
+              ButtonSegment(value: TopicsPerDay.random, label: Text('1–2')),
             ],
             selected: {s.topicsPerDay},
             onSelectionChanged: (v) => _set(ref, SettingKeys.topicsPerDay, v.first.storageValue, topicsChanged: true),
@@ -154,7 +246,7 @@ class SettingsScreen extends ConsumerWidget {
                     title: const Text('Allow usage access'),
                     content: const Text(
                       'To know how long you have been on your phone, Android needs "Usage access". '
-                      'Find Daily Mind in the list and turn it on. Your usage never leaves your phone.',
+                      'Find We Learn in the list and turn it on. Your usage never leaves your phone.',
                     ),
                     actions: [
                       TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Not now')),
@@ -238,22 +330,49 @@ class SettingsScreen extends ConsumerWidget {
               },
               child: const Text('Sign out'),
             ),
+            const SizedBox(height: AppSpacing.sm),
+            TextButton.icon(
+              style: TextButton.styleFrom(foregroundColor: theme.colorScheme.error),
+              onPressed: () => _deleteAccount(context, ref),
+              icon: const Icon(Icons.delete_forever_outlined),
+              label: const Text('Delete account'),
+            ),
           ] else ...[
             Text(
-              'You are using Daily Mind offline. Sign in to back up your progress and use AI features.',
+              'You are using We Learn offline. Sign in to back up your progress and use AI features.',
               style: theme.textTheme.bodyMedium?.copyWith(color: theme.colorScheme.onSurfaceVariant),
             ),
             const SizedBox(height: AppSpacing.sm),
             FilledButton(onPressed: () => context.push('/login'), child: const Text('Sign in')),
           ],
+          const SectionTitle('Privacy and legal'),
+          ListTile(
+            contentPadding: EdgeInsets.zero,
+            leading: const Icon(Icons.privacy_tip_outlined),
+            title: const Text('Privacy policy'),
+            onTap: () => _open(LegalLinks.privacy),
+          ),
+          ListTile(
+            contentPadding: EdgeInsets.zero,
+            leading: const Icon(Icons.description_outlined),
+            title: const Text('Terms of use'),
+            onTap: () => _open(LegalLinks.terms),
+          ),
+          ListTile(
+            contentPadding: EdgeInsets.zero,
+            leading: const Icon(Icons.restart_alt),
+            title: const Text('Reset this phone'),
+            subtitle: const Text('Remove your profile, progress and settings from this phone'),
+            onTap: () => _resetPhone(context, ref),
+          ),
           const SectionTitle('About'),
           ListTile(
             contentPadding: EdgeInsets.zero,
-            title: const Text('Daily Mind'),
+            title: const Text('We Learn'),
             subtitle: const Text('Version 1.0.0 · Learn something instead of scrolling.'),
             onTap: () => showAboutDialog(
               context: context,
-              applicationName: 'Daily Mind',
+              applicationName: 'We Learn',
               applicationVersion: '1.0.0',
               children: [
                 const Text('Recent app log (for bug reports):'),

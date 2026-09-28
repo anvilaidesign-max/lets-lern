@@ -7,6 +7,7 @@ import 'package:workmanager/workmanager.dart';
 import '../bootstrap.dart';
 import '../core/utils/logger.dart';
 import '../data/local/database.dart';
+import '../data/repositories/news_repository.dart';
 import '../data/sync/sync_service.dart';
 import '../features/screen_time/screen_time_service.dart';
 import 'notification_service.dart';
@@ -26,6 +27,7 @@ void callbackDispatcher() {
         case dailyTaskName:
           await container.read(syncServiceProvider).run();
           await container.read(notificationSchedulerProvider).reschedule();
+          await container.read(newsRepositoryProvider).refreshAllIfStale();
         case screenTimeTaskName:
           await container.read(screenTimeServiceProvider).check();
       }

@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Daily Mind</string>
+	<string>We Learn</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -15,7 +15,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>daily_mind</string>
+	<string>We Learn</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -27,9 +27,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Daily Mind uses the camera to photograph your handwritten essay so it can be scored.</string>
+	<string>We Learn uses the camera to photograph your handwritten essay so it can be scored.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Daily Mind lets you choose a photo of your handwritten essay so it can be scored.</string>
+	<string>We Learn lets you choose a photo of your handwritten essay so it can be scored.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

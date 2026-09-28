@@ -106,30 +106,44 @@ void main() {
     });
 
     testWidgets('Home shows today\'s card', (tester) async {
-      final (db, settings) = await tester.runAsync(openSeededDatabase) ?? (throw StateError('seed failed'));
-      final container = containerFor(db, settings);
-      addTearDown(() async {
+      // Real database work happens in real time; the widget then renders
+      // from fixed provider values, so no drift streams run in fake time.
+      final item = await tester.runAsync(() async {
+        final (db, settings) = await openSeededDatabase();
+        final container = containerFor(db, settings);
+        final next = await container.read(homeItemProvider.future);
         container.dispose();
         await db.close();
+        return next;
       });
+      expect(item, isNotNull);
+
+      final container = ProviderContainer(overrides: [
+        initialSettingsProvider.overrideWithValue({SettingKeys.onboardingDone: 'true', SettingKeys.guestMode: 'true'}),
+        databaseProvider.overrideWith((ref) => throw StateError('no database in this widget test')),
+        homeItemProvider.overrideWith(() => _FixedHomeItem(item)),
+        todayTopicsProvider.overrideWith((ref) async => [item!.topicCode]),
+        itemsByDayProvider.overrideWith((ref) => Stream.value(const <String, int>{})),
+        chapterCountsProvider.overrideWith((ref) => Stream.value((read: 0, total: 0))),
+        continueReadingProvider.overrideWith((ref) async => null),
+        isOnlineProvider.overrideWith((ref) => Stream.value(false)),
+        authUserProvider.overrideWith((ref) => Stream.value(null)),
+      ]);
+      addTearDown(container.dispose);
 
       await tester.pumpWidget(UncontrolledProviderScope(
         container: container,
         child: const MaterialApp(home: HomeScreen()),
       ));
-      await tester.runAsync(() async {
-        await container.read(homeItemProvider.future);
-      });
       await tester.pump();
+      await tester.pump(const Duration(milliseconds: 100));
 
-      final item = container.read(homeItemProvider).value;
-      expect(item, isNotNull);
       expect(find.text(item!.preview), findsOneWidget);
       expect(find.text('Quick quiz'), findsOneWidget);
+      expect(find.text('Games'), findsOneWidget);
       expect(find.text('Offline'), findsOneWidget);
     });
   });
-
   group('progress offline, synced later', () {
     test('answering a challenge offline records progress and queues it for upload', () async {
       final (db, settings) = await openSeededDatabase();
@@ -263,4 +277,12 @@ void main() {
       expect(edge.calls, isEmpty);
     });
   });
+}
+
+class _FixedHomeItem extends HomeItemNotifier {
+  _FixedHomeItem(this.item);
+  final ContentItem? item;
+
+  @override
+  Future<ContentItem?> build() async => item;
 }

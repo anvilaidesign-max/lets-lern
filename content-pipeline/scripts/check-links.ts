@@ -1,8 +1,11 @@
 // Checks that every source_url responds. Usage: node scripts/check-links.ts
 
-import { loadContent } from "./lib.ts";
+import { loadChapters, loadContent } from "./lib.ts";
 
-const urls = [...new Set(loadContent().map(({ item }) => item.source_url).filter((u): u is string => !!u))];
+const urls = [...new Set([
+  ...loadContent().map(({ item }) => item.source_url),
+  ...loadChapters().flatMap((c) => c.sources.map((s) => s.url)),
+].filter((u): u is string => !!u))];
 console.log(`Checking ${urls.length} unique source URLs...`);
 
 const broken: string[] = [];

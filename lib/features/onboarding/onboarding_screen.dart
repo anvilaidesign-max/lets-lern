@@ -29,13 +29,18 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   final Set<String> _topics = {...Topic.allCodes};
   bool _notificationsOn = false;
   bool _screenTimeOn = false;
+  final _name = TextEditingController();
+  final _field = TextEditingController();
+  LearningLevel _level = LearningLevel.mixed;
 
   bool get _showScreenTime => !kIsWeb && Platform.isAndroid;
-  int get _pageCount => _showScreenTime ? 4 : 3;
+  int get _pageCount => _showScreenTime ? 5 : 4;
 
   @override
   void dispose() {
     _pages.dispose();
+    _name.dispose();
+    _field.dispose();
     super.dispose();
   }
 
@@ -53,6 +58,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
       SettingKeys.enabledTopics: all ? '' : [for (final c in Topic.allCodes) if (_topics.contains(c)) c].join(','),
       SettingKeys.notificationsEnabled: '$_notificationsOn',
       SettingKeys.screenTimeEnabled: '$_screenTimeOn',
+      SettingKeys.profileName: _name.text.trim(),
+      SettingKeys.profileField: _field.text.trim(),
+      SettingKeys.learningLevel: _level.storageValue,
       SettingKeys.onboardingDone: 'true',
     });
     if (_screenTimeOn) await BackgroundTasks.setScreenTimeCheck(enabled: true);
@@ -71,11 +79,38 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                 onPageChanged: (p) => setState(() => _page = p),
                 children: [
                   _Page(
-                    emoji: '🧠',
-                    title: 'Keep your mind active',
+                    emoji: '',
+                    logo: true,
+                    title: 'Welcome to We Learn',
                     body: 'Short facts, words and true or false challenges through the day, '
                         'instead of endless scrolling. Maths, English, French, science, politics, '
                         'economics, finance and world affairs.',
+                  ),
+                  _Page(
+                    emoji: '👋',
+                    title: 'About you',
+                    body: 'So your cards and AI tutor match what you study and how deep you want to go.',
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        TextField(
+                          controller: _name,
+                          textCapitalization: TextCapitalization.words,
+                          decoration: const InputDecoration(hintText: 'Your name'),
+                        ),
+                        const SizedBox(height: AppSpacing.sm),
+                        TextField(
+                          controller: _field,
+                          decoration: const InputDecoration(hintText: 'What you study or do (e.g. Electronics Engineering)'),
+                        ),
+                        const SizedBox(height: AppSpacing.md),
+                        SegmentedButton<LearningLevel>(
+                          segments: [for (final l in LearningLevel.values) ButtonSegment(value: l, label: Text(l.label))],
+                          selected: {_level},
+                          onSelectionChanged: (v) => setState(() => _level = v.first),
+                        ),
+                      ],
+                    ),
                   ),
                   _Page(
                     emoji: '🎯',
@@ -123,7 +158,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                     _Page(
                       emoji: '🌿',
                       title: 'Brain breaks',
-                      body: 'Optional: Daily Mind can remind you to take a break when you have been on your phone '
+                      body: 'Optional: We Learn can remind you to take a break when you have been on your phone '
                           'too long. Android needs "Usage access" for this. Your usage data never leaves your phone.',
                       child: _screenTimeOn
                           ? Text('Brain breaks are on ✓', style: theme.textTheme.titleMedium)
@@ -166,7 +201,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                       child: Text(_page == _pageCount - 1 ? 'Get started' : 'Continue'),
                     ),
                   ),
-                  if (_page >= 2)
+                  if (_page >= 3)
                     TextButton(onPressed: _next, child: const Text('Skip for now')),
                 ],
               ),
@@ -179,12 +214,13 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
 }
 
 class _Page extends StatelessWidget {
-  const _Page({required this.emoji, required this.title, required this.body, this.child});
+  const _Page({required this.emoji, required this.title, required this.body, this.child, this.logo = false});
 
   final String emoji;
   final String title;
   final String body;
   final Widget? child;
+  final bool logo;
 
   @override
   Widget build(BuildContext context) {
@@ -194,7 +230,13 @@ class _Page extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(height: AppSpacing.xxl),
-          Text(emoji, style: const TextStyle(fontSize: 64)),
+          if (logo)
+            ClipRRect(
+              borderRadius: BorderRadius.circular(28),
+              child: Image.asset('assets/icon/logo.png', width: 112, height: 112, semanticLabel: 'We Learn logo'),
+            )
+          else
+            Text(emoji, style: const TextStyle(fontSize: 64)),
           const SizedBox(height: AppSpacing.lg),
           Text(title, style: theme.textTheme.headlineMedium, textAlign: TextAlign.center),
           const SizedBox(height: AppSpacing.md),

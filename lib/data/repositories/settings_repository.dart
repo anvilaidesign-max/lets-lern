@@ -36,6 +36,17 @@ class SettingsNotifier extends Notifier<AppSettings> {
     await _dao.setMany(values);
   }
 
+  /// Wipes every setting except the device id and seed version, so the app
+  /// starts again from onboarding.
+  Future<void> resetAll() async {
+    const keep = {SettingKeys.deviceId, SettingKeys.seedVersion};
+    for (final key in _raw.keys.where((k) => !keep.contains(k)).toList()) {
+      await _dao.remove(key);
+      _raw.remove(key);
+    }
+    state = AppSettings.fromMap(_raw);
+  }
+
   Future<void> remove(String key) async {
     _raw.remove(key);
     state = AppSettings.fromMap(_raw);

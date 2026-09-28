@@ -4,6 +4,7 @@ import '../../core/errors/app_exception.dart';
 import '../../core/utils/result.dart';
 import '../remote/connectivity_service.dart';
 import '../remote/edge_functions_api.dart';
+import 'settings_repository.dart';
 
 enum GameMode {
   teach('teach', 'Teach me', 'A short lesson, then a question.'),
@@ -69,6 +70,7 @@ class AiGameRepository {
         if (!await _ref.read(connectivityServiceProvider).isOnline()) {
           throw const OfflineException('The AI game needs internet.');
         }
+        final settings = _ref.read(settingsProvider);
         final response = await _ref.read(edgeFunctionsApiProvider).call(
               'ai-game-turn',
               {
@@ -76,6 +78,9 @@ class AiGameRepository {
                 'topic_code': topicCode,
                 'mode': mode.apiValue,
                 'user_message': message,
+                // Lets the tutor pitch lessons at the learner's level.
+                'level': settings.level.storageValue,
+                if (settings.profileField.isNotEmpty) 'learner': settings.profileField,
               },
               timeout: EdgeFunctionsApi.gameTimeout,
             );

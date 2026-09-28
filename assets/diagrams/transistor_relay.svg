@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+<rect x="0" y="0" width="800" height="450" rx="18" fill="#FFFFFF"/>
+<text x="400" y="38" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="bold" fill="#0F172A" text-anchor="middle">Transistor switch driving a relay</text>
+<rect x="40" y="230" width="170" height="80" rx="12" fill="#DBEAFE" stroke="#2563EB" stroke-width="2.5"/><text x="125" y="268" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" fill="#0F172A" text-anchor="middle">Micro-controller</text><text x="125" y="290" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" fill="#64748B" text-anchor="middle">pin: 5 V</text>
+<line x1="210" y1="270" x2="240" y2="270" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<path d="M240,270 L248.57142857142858,270 L257.1,258 L274.3,282 L291.4,258 L308.6,282 L325.7,258 L342.9,282 L351.42857142857144,270 L360,270" stroke="#F97316" stroke-width="3.5" fill="none" stroke-linejoin="round" stroke-linecap="round"/><text x="300" y="248" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="bold" fill="#F97316" text-anchor="middle">R_B 2.2 kΩ</text>
+<line x1="360" y1="270" x2="405" y2="270" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<circle cx="430" cy="270" r="42" fill="#FFFFFF" stroke="#0F172A" stroke-width="2.5"/>
+<line x1="410" y1="245" x2="410" y2="295" stroke="#334155" stroke-width="5" stroke-linecap="round"/>
+<line x1="410" y1="258" x2="450" y2="235" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<line x1="450" y1="235" x2="450" y2="200" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<line x1="410" y1="282" x2="450" y2="305" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<polygon points="450,305 432,303 441,290" fill="#0F172A" stroke="none" stroke-width="0"/>
+<line x1="450" y1="305" x2="450" y2="350" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<line x1="450" y1="350" x2="450" y2="362" stroke="#334155" stroke-width="3" stroke-linecap="round"/><line x1="432" y1="362" x2="468" y2="362" stroke="#334155" stroke-width="3" stroke-linecap="round"/><line x1="439" y1="369" x2="461" y2="369" stroke="#334155" stroke-width="3" stroke-linecap="round"/><line x1="446" y1="376" x2="454" y2="376" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<text x="478" y="245" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" fill="#64748B" text-anchor="start">C</text>
+<text x="392" y="265" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" fill="#64748B" text-anchor="end">B</text>
+<text x="478" y="318" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" fill="#64748B" text-anchor="start">E</text>
+<text x="355" y="330" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" fill="#0F172A" text-anchor="middle">NPN</text>
+<rect x="425" y="115" width="50" height="85" rx="12" fill="#FFEDD5" stroke="#F97316" stroke-width="2.5"/>
+<text x="450" y="163" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#F97316" text-anchor="middle">coil</text>
+<line x1="450" y1="115" x2="450" y2="85" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<line x1="450" y1="85" x2="600" y2="85" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<text x="610" y="91" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" fill="#DC2626" text-anchor="start">+12 V</text>
+<line x1="450" y1="200" x2="560" y2="200" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<line x1="560" y1="200" x2="560" y2="175" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<line x1="560" y1="175" x2="560" y2="110" stroke="#334155" stroke-width="3" stroke-linecap="round"/><polygon points="560,134.1 570.5,150.9 549.5,150.9" fill="#7C3AED" stroke="none" stroke-width="0"/><line x1="570.5" y1="134.1" x2="549.5" y2="134.1" stroke="#7C3AED" stroke-width="3.5" stroke-linecap="round"/>
+<line x1="560" y1="110" x2="560" y2="85" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<circle cx="450" cy="200" r="5" fill="#334155"/>
+<circle cx="560" cy="85" r="5" fill="#334155"/>
+<text x="578" y="150" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#7C3AED" text-anchor="start">flyback</text>
+<text x="578" y="170" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#7C3AED" text-anchor="start">diode</text>
+<line x1="250" y1="300" x2="318" y2="300" stroke="#DC2626" stroke-width="2.5" stroke-linecap="round"/><polygon points="330,300 318,306.6 318,293.4" fill="#DC2626" stroke="none" stroke-width="0"/>
+<text x="290" y="322" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#DC2626" text-anchor="middle">I_B ≈ 2 mA</text>
+<line x1="495" y1="205" x2="495" y2="243" stroke="#DC2626" stroke-width="2.5" stroke-linecap="round"/><polygon points="495,255 488.4,243 501.6,243" fill="#DC2626" stroke="none" stroke-width="0"/>
+<text x="505" y="236" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#DC2626" text-anchor="start">I_C = 60 mA</text>
+<text x="400" y="420" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" font-style="italic" fill="#64748B" text-anchor="middle">A small base current switches a larger collector current. The diode absorbs the coil's spike.</text>
+</svg>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+<rect x="0" y="0" width="800" height="450" rx="18" fill="#FFFFFF"/>
+<text x="400" y="38" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="bold" fill="#0F172A" text-anchor="middle">Public-key encryption</text>
+<circle cx="110" cy="170" r="38" fill="#DBEAFE" stroke="#2563EB" stroke-width="3"/>
+<text x="110" y="177" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#2563EB" text-anchor="middle">Tendai</text>
+<circle cx="690" cy="170" r="38" fill="#DCFCE7" stroke="#16A34A" stroke-width="3"/>
+<text x="690" y="177" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#16A34A" text-anchor="middle">Rudo</text>
+<rect x="610" y="240" width="160" height="44" rx="12" fill="#FFEDD5" stroke="#F97316" stroke-width="2.5"/>
+<text x="690" y="268" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#0F172A" text-anchor="middle">public key</text>
+<rect x="610" y="300" width="160" height="44" rx="12" fill="#FEE2E2" stroke="#DC2626" stroke-width="2.5"/>
+<text x="690" y="328" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#0F172A" text-anchor="middle">private key</text>
+<text x="690" y="368" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" fill="#DC2626" text-anchor="middle">kept secret by Rudo</text>
+<line x1="608" y1="262" x2="161.87731040774594" y2="197.71157748233892" stroke="#F97316" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="7 5"/><polygon points="150,196 162.8,191.2 160.9,204.2" fill="#F97316" stroke="none" stroke-width="0"/>
+<text x="420" y="205" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" fill="#F97316" text-anchor="middle">1. Rudo shares her public key with anyone</text>
+<rect x="160" y="280" width="150" height="60" rx="12" fill="#FFFFFF" stroke="#64748B" stroke-width="2.5"/><text x="235" y="316" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="normal" fill="#0F172A" text-anchor="middle">“Meet at 5”</text>
+<line x1="310" y1="310" x2="348" y2="310" stroke="#334155" stroke-width="3" stroke-linecap="round"/><polygon points="360,310 348,316.6 348,303.4" fill="#334155" stroke="none" stroke-width="0"/>
+<text x="335" y="296" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="normal" fill="#64748B" text-anchor="middle">lock</text>
+<rect x="362" y="280" width="150" height="60" rx="12" fill="#E2E8F0" stroke="#64748B" stroke-width="2.5"/><text x="437" y="317" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" fill="#0F172A" text-anchor="middle">x9#Qp!r</text>
+<line x1="512" y1="310" x2="594.0966026447538" y2="320.48041735890473" stroke="#334155" stroke-width="3" stroke-linecap="round"/><polygon points="606,322 593.3,327 594.9,313.9" fill="#334155" stroke="none" stroke-width="0"/>
+<text x="560" y="300" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" fill="#64748B" text-anchor="middle">2. send</text>
+<text x="437" y="360" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#DC2626" text-anchor="middle">only the private key can unlock it</text>
+<rect x="120" y="390" width="560" height="46" rx="12" fill="#FEF9C3" stroke="#EAB308" stroke-width="2.5"/>
+<text x="400" y="419" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" fill="#0F172A" text-anchor="middle">HTTPS uses this to agree a key, then fast AES for the data</text>
+</svg>

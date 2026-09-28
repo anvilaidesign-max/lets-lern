@@ -10,6 +10,8 @@ import type { EssayRow, ScoreEssayDeps } from "../_shared/score_essay.ts";
 import { handleAiGameTurn } from "../_shared/ai_game.ts";
 import type { AiGameDeps, GameSession } from "../_shared/ai_game.ts";
 import { handleContentUpdates } from "../_shared/content_updates.ts";
+import { handleDeleteAccount } from "../_shared/delete_account.ts";
+import { buildSystemPrompt, cleanLearner } from "../_shared/ai_game.ts";
 import type { ContentRow } from "../_shared/content_updates.ts";
 import { parseEssayScore, parseGameTurn, ValidationError } from "../_shared/validation.ts";
 import type { AiClient } from "../_shared/ai_client.ts";
@@ -252,4 +254,32 @@ test("parseGameTurn drops options when finished", () => {
   const turn = parseGameTurn(JSON.stringify({ ai_message: "Done", options: ["A", "B"], correct: true, finished: true }));
   assert.equal(turn.options, null);
   assert.equal(turn.finished, true);
+});
+
+// ------------------------------------------------------------- delete-account
+
+test("delete-account needs auth and an explicit confirmation, then deletes everything", async () => {
+  const removed: string[] = [];
+  let deleted = "";
+  const deps = {
+    getUserId: async (req: Request) => (req.headers.get("Authorization") ? USER : null),
+    listEssayPhotos: async (id: string) => [`${id}/a.jpg`, `${id}/b.jpg`],
+    removeEssayPhotos: async (paths: string[]) => { removed.push(...paths); },
+    deleteUser: async (id: string) => { deleted = id; },
+  };
+  assert.equal((await handleDeleteAccount(post({ confirm: "DELETE" }, false), deps)).status, 401);
+  assert.equal((await handleDeleteAccount(post({}), deps)).status, 400);
+  assert.equal(deleted, "");
+  const res = await handleDeleteAccount(post({ confirm: "DELETE" }), deps);
+  assert.equal(res.status, 200);
+  assert.deepEqual(removed, [`${USER}/a.jpg`, `${USER}/b.jpg`]);
+  assert.equal(deleted, USER);
+});
+
+test("ai-game system prompt includes level and a cleaned learner description", () => {
+  const learner = cleanLearner("Industrial Electronics\nEngineering student");
+  assert.equal(learner, "Industrial Electronics Engineering student");
+  const prompt = buildSystemPrompt("Electronics Engineering", "quiz", 0, "advanced", learner);
+  assert.match(prompt, /university level/);
+  assert.match(prompt, /About the learner: Industrial Electronics Engineering student/);
 });

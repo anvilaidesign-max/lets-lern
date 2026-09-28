@@ -24,6 +24,7 @@ List<String> topicsForDay({
   final wanted = switch (topicsPerDay) {
     TopicsPerDay.one => 1,
     TopicsPerDay.two => 2,
+    TopicsPerDay.three => 3,
     TopicsPerDay.random => rng.nextInt(2) + 1,
   };
   final n = wanted.clamp(1, pool.length);

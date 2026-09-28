@@ -1,7 +1,16 @@
 import 'dart:math';
 
+import '../models/app_settings.dart';
 import '../models/content_item.dart';
 import '../models/progress.dart';
+
+/// Keeps the items that match the learner's level. Falls back to the whole
+/// pool when nothing matches, so a topic never looks empty.
+List<ContentItem> filterByLevel(List<ContentItem> pool, LearningLevel level) {
+  if (level == LearningLevel.mixed) return pool;
+  final matching = [for (final i in pool) if (level.allows(i.difficulty)) i];
+  return matching.isEmpty ? pool : matching;
+}
 
 /// Picks the next item to show (ARCHITECTURE.md 8.2):
 ///  * aim for ~40% challenges, 30% facts/lessons, 30% words/phrases;

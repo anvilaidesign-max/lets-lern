@@ -11,6 +11,7 @@ import '../../domain/models/content_item.dart';
 import '../../domain/models/topic.dart';
 import '../../domain/services/streak_service.dart';
 import '../common/widgets.dart';
+import '../profile/profile_avatar.dart';
 import 'home_providers.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -31,7 +32,9 @@ class HomeScreen extends ConsumerWidget {
     final item = ref.watch(homeItemProvider);
     final online = ref.watch(isOnlineProvider).value ?? true;
     final user = ref.watch(authUserProvider).value;
-    final firstName = (user?.userMetadata?['full_name'] as String?)?.split(' ').first;
+    final profileName = ref.watch(settingsProvider.select((s) => s.profileName));
+    final fullName = profileName.isNotEmpty ? profileName : user?.userMetadata?['full_name'] as String?;
+    final firstName = fullName?.trim().split(' ').first;
 
     return Scaffold(
       body: SafeArea(
@@ -45,12 +48,21 @@ class HomeScreen extends ConsumerWidget {
             children: [
               Row(
                 children: [
+                  Tooltip(
+                    message: 'Profile',
+                    child: InkWell(
+                      customBorder: const CircleBorder(),
+                      onTap: () => context.push('/profile'),
+                      child: const ProfileAvatarView(size: 48),
+                    ),
+                  ),
+                  const SizedBox(width: AppSpacing.md),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          firstName == null ? _greeting(DateTime.now()) : '${_greeting(DateTime.now())}, $firstName',
+                          firstName == null || firstName.isEmpty ? _greeting(DateTime.now()) : '${_greeting(DateTime.now())}, $firstName',
                           style: theme.textTheme.headlineSmall,
                         ),
                         const SizedBox(height: 2),
@@ -95,6 +107,7 @@ class HomeScreen extends ConsumerWidget {
                 error: (e, _) => ErrorView(message: 'Could not load today\'s card.', onRetry: () => ref.invalidate(homeItemProvider)),
               ),
               const SizedBox(height: AppSpacing.lg),
+              const _ContinueReading(),
               _ActionTile(
                 icon: Icons.bolt_outlined,
                 title: 'Quick quiz',
@@ -103,9 +116,16 @@ class HomeScreen extends ConsumerWidget {
               ),
               const SizedBox(height: AppSpacing.sm),
               _ActionTile(
-                icon: Icons.chat_bubble_outline,
-                title: 'AI game',
-                subtitle: online ? 'Learn and play with your AI tutor' : 'Needs internet',
+                icon: Icons.sports_esports_outlined,
+                title: 'Games',
+                subtitle: 'Falling Numbers, Swipe It, Memory Match, Rocket Quiz',
+                onTap: () => context.push('/games'),
+              ),
+              const SizedBox(height: AppSpacing.sm),
+              _ActionTile(
+                icon: Icons.auto_awesome_outlined,
+                title: 'AI tutor',
+                subtitle: online ? 'Lessons and quizzes with your AI teacher' : 'Needs internet',
                 onTap: () => context.push('/ai-game'),
               ),
               const SizedBox(height: AppSpacing.sm),
@@ -246,6 +266,53 @@ class _EssayTile extends ConsumerWidget {
       title: 'Essay challenge',
       subtitle: open ? 'Write by hand, get a score out of 20' : 'Opens Saturday · in $days day${days == 1 ? '' : 's'}',
       onTap: () => context.push('/essay'),
+    );
+  }
+}
+
+/// The next chapter to read, from today's topics first.
+class _ContinueReading extends ConsumerWidget {
+  const _ContinueReading();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final entry = ref.watch(continueReadingProvider).value;
+    if (entry == null) return const SizedBox.shrink();
+    final theme = Theme.of(context);
+    final c = entry.chapter;
+    final color = AppColors.forTopicOn(theme.brightness, c.topicCode);
+    final started = entry.progress?.isRead == true;
+    return Padding(
+      padding: const EdgeInsets.only(bottom: AppSpacing.sm),
+      child: AppCard(
+        onTap: () => context.push('/read/${c.id}'),
+        child: Row(
+          children: [
+            Container(
+              width: 44,
+              height: 44,
+              decoration: BoxDecoration(color: color.withValues(alpha: 0.12), borderRadius: BorderRadius.circular(12)),
+              child: Icon(Icons.menu_book_outlined, color: color),
+            ),
+            const SizedBox(width: AppSpacing.md),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TypeLabel(text: started ? 'Take the quiz · ${Topic.shortNameOf(c.topicCode)}' : 'Continue reading · ${Topic.shortNameOf(c.topicCode)}', color: color),
+                  const SizedBox(height: 2),
+                  Text(c.title, style: theme.textTheme.titleMedium, maxLines: 2, overflow: TextOverflow.ellipsis),
+                  Text(
+                    'Chapter ${c.position} · ${c.readingMinutes} min · ${c.quiz.length} quiz questions',
+                    style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant),
+                  ),
+                ],
+              ),
+            ),
+            const Icon(Icons.chevron_right),
+          ],
+        ),
+      ),
     );
   }
 }

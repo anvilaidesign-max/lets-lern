@@ -9,12 +9,21 @@ import '../../features/auth/login_screen.dart';
 import '../../features/card/card_screen.dart';
 import '../../features/essay/essay_detail_screen.dart';
 import '../../features/essay/essay_screen.dart';
+import '../../features/games/games_hub_screen.dart';
+import '../../features/games/memory_game_screen.dart';
+import '../../features/games/number_rush_screen.dart';
+import '../../features/games/rocket_quiz_screen.dart';
+import '../../features/games/swipe_game_screen.dart';
 import '../../features/home/home_screen.dart';
 import '../../features/library/library_screen.dart';
 import '../../features/library/topic_items_screen.dart';
+import '../../features/news/news_screen.dart';
 import '../../features/onboarding/onboarding_screen.dart';
+import '../../features/profile/profile_screen.dart';
 import '../../features/progress/progress_screen.dart';
 import '../../features/quiz/quick_quiz_screen.dart';
+import '../../features/reader/chapter_quiz_screen.dart';
+import '../../features/reader/chapter_reader_screen.dart';
 import '../../features/settings/settings_screen.dart';
 import '../../features/shell/app_shell.dart';
 
@@ -50,6 +59,9 @@ final routerProvider = Provider<GoRouter>((ref) {
             GoRoute(path: '/', builder: (context, state) => const HomeScreen()),
           ]),
           StatefulShellBranch(routes: [
+            GoRoute(path: '/news', builder: (context, state) => const NewsScreen()),
+          ]),
+          StatefulShellBranch(routes: [
             GoRoute(
               path: '/library',
               builder: (context, state) => const LibraryScreen(),
@@ -81,6 +93,30 @@ final routerProvider = Provider<GoRouter>((ref) {
           );
         },
       ),
+      GoRoute(
+        path: '/read/:chapterId',
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) => ChapterReaderScreen(chapterId: state.pathParameters['chapterId']!),
+        routes: [
+          GoRoute(
+            path: 'quiz',
+            parentNavigatorKey: rootNavigatorKey,
+            builder: (context, state) => ChapterQuizScreen(chapterId: state.pathParameters['chapterId']!),
+          ),
+        ],
+      ),
+      GoRoute(
+        path: '/games',
+        parentNavigatorKey: rootNavigatorKey,
+        builder: (context, state) => const GamesHubScreen(),
+        routes: [
+          GoRoute(path: 'number-rush', parentNavigatorKey: rootNavigatorKey, builder: (context, state) => const NumberRushScreen()),
+          GoRoute(path: 'swipe', parentNavigatorKey: rootNavigatorKey, builder: (context, state) => const SwipeGameScreen()),
+          GoRoute(path: 'memory', parentNavigatorKey: rootNavigatorKey, builder: (context, state) => const MemoryGameScreen()),
+          GoRoute(path: 'rocket', parentNavigatorKey: rootNavigatorKey, builder: (context, state) => const RocketQuizScreen()),
+        ],
+      ),
+      GoRoute(path: '/profile', parentNavigatorKey: rootNavigatorKey, builder: (context, state) => const ProfileScreen()),
       GoRoute(path: '/quiz', parentNavigatorKey: rootNavigatorKey, builder: (context, state) => const QuickQuizScreen()),
       GoRoute(
         path: '/essay',

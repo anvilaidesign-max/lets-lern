@@ -15,6 +15,7 @@ import '../local/database.dart';
 import '../remote/connectivity_service.dart';
 import '../remote/edge_functions_api.dart';
 import '../remote/supabase_service.dart';
+import '../repositories/chapter_repository.dart';
 import '../repositories/content_repository.dart';
 import '../repositories/essay_repository.dart';
 import '../repositories/settings_repository.dart';
@@ -49,7 +50,9 @@ class SyncService {
 
       await _adoptOrSwitchAccount(userId);
       await _push();
+      await _syncProfileName(userId);
       await _pullContent();
+      await _pullChapters();
       await _restoreIfNeeded(userId);
       await _sendQueuedEssays();
       return SyncOutcome.done;
@@ -73,6 +76,9 @@ class SyncService {
       }
       for (final row in await ActivityDao(_db).all()) {
         await queue.activity(row);
+      }
+      for (final row in await _ref.read(chapterRepositoryProvider).allProgress()) {
+        await queue.chapterProgress(row);
       }
     } else {
       await _db.clearUserData();
@@ -102,6 +108,8 @@ class SyncService {
             await client.rpc('sync_user_progress', params: {'p_rows': payloads}).timeout(_callTimeout);
           case SyncEntity.activity:
             await client.rpc('sync_daily_activity', params: {'p_rows': payloads}).timeout(_callTimeout);
+          case SyncEntity.chapterProgress:
+            await client.rpc('sync_chapter_progress', params: {'p_rows': payloads}).timeout(_callTimeout);
           case SyncEntity.report:
             await client
                 .from('content_reports')
@@ -116,6 +124,19 @@ class SyncService {
         await dao.incrementAttempts([for (final r in batch) r.id]);
         return;
       }
+    }
+  }
+
+  /// Saves the profile name to the account (`profiles.display_name`).
+  Future<void> _syncProfileName(String userId) async {
+    final name = _settings.raw(SettingKeys.profileName)?.trim() ?? '';
+    if (name.isEmpty || name == _settings.raw(SettingKeys.profileSyncedName)) return;
+    try {
+      final client = _ref.read(supabaseServiceProvider).client!;
+      await client.from('profiles').upsert({'id': userId, 'display_name': name}).timeout(_callTimeout);
+      await _settings.set(SettingKeys.profileSyncedName, name);
+    } catch (e) {
+      AppLogger.warn('Profile name sync failed', e);
     }
   }
 
@@ -153,6 +174,27 @@ class SyncService {
     if (serverTime != null) values[SettingKeys.lastSyncAt] = serverTime;
     if (fullRefresh) values[SettingKeys.offlinePackRefreshedAt] = DateTime.now().toIso8601String();
     if (values.isNotEmpty) await _settings.setMany(values);
+  }
+
+  /// PULL new or updated book chapters (REST, RLS: active chapters only).
+  Future<void> _pullChapters() async {
+    try {
+      final client = _ref.read(supabaseServiceProvider).client!;
+      final includeUnverified = _ref.read(settingsProvider).includeUnverified;
+      var since = _settings.raw(SettingKeys.chaptersSyncedAt) ?? '1970-01-01T00:00:00Z';
+      for (var page = 0; page < 20; page++) {
+        var query = client.from('chapters').select().gt('updated_at', since);
+        if (!includeUnverified) query = query.eq('verified', true);
+        final rows = await query.order('updated_at').limit(100).timeout(_callTimeout);
+        if (rows.isEmpty) break;
+        await _ref.read(chapterRepositoryProvider).upsertFromJson(rows);
+        since = rows.last['updated_at'] as String;
+        await _settings.set(SettingKeys.chaptersSyncedAt, since);
+        if (rows.length < 100) break;
+      }
+    } catch (e) {
+      AppLogger.warn('Chapter pull failed', e);
+    }
   }
 
   /// PULL progress once per account on this device (new phone or reinstall).
@@ -255,6 +297,13 @@ class SyncService {
         status: EssayStatus.done.name,
         createdAt: DateTime.tryParse(e['created_at'] as String? ?? '')?.toLocal() ?? DateTime.now(),
       ));
+    }
+
+    try {
+      final chapterProgress = await client.from('user_chapter_progress').select().timeout(_callTimeout);
+      await _ref.read(chapterRepositoryProvider).mergeRemoteProgress(chapterProgress);
+    } catch (e) {
+      AppLogger.warn('Chapter progress restore failed', e);
     }
 
     await _settings.set(SettingKeys.progressRestoredFor, userId);

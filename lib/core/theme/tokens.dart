@@ -32,6 +32,11 @@ class AppColors {
     'economics': Color(0xFFD97706),
     'finance': Color(0xFF0D9488),
     'relations': Color(0xFFDB2777),
+    'tech': Color(0xFF0284C7),
+    'engineering': Color(0xFFC2410C),
+    'medicine': Color(0xFFBE123C),
+    'law': Color(0xFF4D7C0F),
+    'business': Color(0xFF854D0E),
   };
 
   static Color forTopic(String code) => topic[code] ?? const Color(0xFF555555);

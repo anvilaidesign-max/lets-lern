@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+<rect x="0" y="0" width="800" height="450" rx="18" fill="#FFFFFF"/>
+<text x="400" y="38" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="bold" fill="#0F172A" text-anchor="middle">Three ways to persuade</text>
+<polygon points="400,80 150,380 650,380" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="3"/>
+<rect x="300" y="62" width="200" height="76" rx="12" fill="#DBEAFE" stroke="#2563EB" stroke-width="2.5"/><text x="400" y="98" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" fill="#0F172A" text-anchor="middle">Ethos</text><text x="400" y="126" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" fill="#64748B" text-anchor="middle">trust in the speaker</text>
+<rect x="40" y="330" width="220" height="76" rx="12" fill="#FEE2E2" stroke="#DC2626" stroke-width="2.5"/><text x="150" y="366" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" fill="#0F172A" text-anchor="middle">Pathos</text><text x="150" y="394" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" fill="#64748B" text-anchor="middle">the audience's feelings</text>
+<rect x="540" y="330" width="220" height="76" rx="12" fill="#DCFCE7" stroke="#16A34A" stroke-width="2.5"/><text x="650" y="366" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" fill="#0F172A" text-anchor="middle">Logos</text><text x="650" y="394" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="normal" fill="#64748B" text-anchor="middle">logic and evidence</text>
+<text x="400" y="232" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="bold" fill="#0F172A" text-anchor="middle">Your message</text>
+<text x="400" y="258" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" font-style="italic" fill="#64748B" text-anchor="middle">strongest when all three work together</text>
+<text x="175" y="210" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" font-style="italic" fill="#2563EB" text-anchor="end">"As an engineer with</text>
+<text x="175" y="228" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" font-style="italic" fill="#2563EB" text-anchor="end">ten years on site..."</text>
+<text x="625" y="210" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" font-style="italic" fill="#16A34A" text-anchor="start">"Outages cost us</text>
+<text x="625" y="228" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" font-style="italic" fill="#16A34A" text-anchor="start">12% of output."</text>
+<text x="400" y="432" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" font-style="italic" fill="#DC2626" text-anchor="middle">"Imagine a nurse delivering a baby by phone torchlight."  (pathos)</text>
+</svg>

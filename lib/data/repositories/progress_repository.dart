@@ -33,7 +33,7 @@ class ProgressRepository {
   Future<void> recordView(ContentItem item) async {
     final row = await _progress.bump(item.id, seen: 1, now: DateTime.now());
     await _queue.progress(row);
-    if (item.type != ContentType.challenge) await _complete(item.id);
+    if (item.type != ContentType.challenge) await completeActivity(item.id);
   }
 
   Future<void> recordAnswer(ContentItem item, {required bool correct}) async {
@@ -45,7 +45,7 @@ class ProgressRepository {
       now: DateTime.now(),
     );
     await _queue.progress(row);
-    await _complete(item.id);
+    await completeActivity(item.id);
   }
 
   Future<bool> toggleSaved(String itemId, {required bool saved}) async {
@@ -59,8 +59,9 @@ class ProgressRepository {
     await _queue.report(itemId, reason);
   }
 
-  /// Counts an item towards today's streak once per day.
-  Future<void> _complete(String itemId) async {
+  /// Counts an item (card, chapter or chapter quiz) towards today's streak,
+  /// once per day per key.
+  Future<void> completeActivity(String itemId) async {
     final today = DateKeys.dayKey(DateTime.now());
     final stored = _settings.raw(SettingKeys.completedToday) ?? '';
     final parts = stored.split('|');

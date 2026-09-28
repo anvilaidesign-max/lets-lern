@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+<rect x="0" y="0" width="800" height="450" rx="18" fill="#FFFFFF"/>
+<text x="400" y="38" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="bold" fill="#0F172A" text-anchor="middle">Inverting amplifier</text>
+<polygon points="380,150 380,330 530,240" fill="#DBEAFE" stroke="#2563EB" stroke-width="3"/>
+<text x="398" y="207" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="bold" fill="#0F172A" text-anchor="middle">−</text>
+<text x="398" y="292" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="bold" fill="#0F172A" text-anchor="middle">+</text>
+<text x="80" y="206" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" fill="#0F172A" text-anchor="end">V_in</text>
+<circle cx="90" cy="200" r="5" fill="#334155"/>
+<line x1="90" y1="200" x2="140" y2="200" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<path d="M140,200 L149.28571428571428,200 L158.6,188 L177.1,212 L195.7,188 L214.3,212 L232.9,188 L251.4,212 L260.7142857142857,200 L270,200" stroke="#F97316" stroke-width="3.5" fill="none" stroke-linejoin="round" stroke-linecap="round"/><text x="205" y="178" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="bold" fill="#F97316" text-anchor="middle">R_in 10 kΩ</text>
+<line x1="270" y1="200" x2="380" y2="200" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<circle cx="330" cy="200" r="5" fill="#334155"/>
+<line x1="330" y1="200" x2="330" y2="110" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<line x1="330" y1="110" x2="380" y2="110" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<path d="M380,110 L391.42857142857144,110 L402.9,98 L425.7,122 L448.6,98 L471.4,122 L494.3,98 L517.1,122 L528.5714285714286,110 L540,110" stroke="#16A34A" stroke-width="3.5" fill="none" stroke-linejoin="round" stroke-linecap="round"/><text x="460" y="88" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="bold" fill="#16A34A" text-anchor="middle">R_f 100 kΩ</text>
+<line x1="540" y1="110" x2="600" y2="110" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<line x1="600" y1="110" x2="600" y2="240" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<line x1="530" y1="240" x2="680" y2="240" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<circle cx="600" cy="240" r="5" fill="#334155"/>
+<circle cx="680" cy="240" r="5" fill="#334155"/>
+<text x="690" y="246" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" fill="#0F172A" text-anchor="start">V_out</text>
+<line x1="380" y1="280" x2="330" y2="280" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<line x1="330" y1="280" x2="330" y2="320" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<line x1="330" y1="320" x2="330" y2="332" stroke="#334155" stroke-width="3" stroke-linecap="round"/><line x1="312" y1="332" x2="348" y2="332" stroke="#334155" stroke-width="3" stroke-linecap="round"/><line x1="319" y1="339" x2="341" y2="339" stroke="#334155" stroke-width="3" stroke-linecap="round"/><line x1="326" y1="346" x2="334" y2="346" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<text x="330" y="232" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" font-style="italic" fill="#7C3AED" text-anchor="middle">virtual ground (0 V)</text>
+<rect x="215" y="370" width="370" height="58" rx="12" fill="#FEF9C3" stroke="#EAB308" stroke-width="2.5"/>
+<text x="400" y="406" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" fill="#0F172A" text-anchor="middle">Gain = −R_f ÷ R_in = −100 ÷ 10 = −10</text>
+</svg>

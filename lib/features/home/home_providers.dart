@@ -1,10 +1,12 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/utils/date_utils.dart';
+import '../../data/repositories/chapter_repository.dart';
 import '../../data/repositories/content_repository.dart';
 import '../../data/repositories/daily_plan_repository.dart';
 import '../../data/repositories/progress_repository.dart';
 import '../../data/repositories/settings_repository.dart';
+import '../../domain/models/chapter.dart';
 import '../../domain/models/content_item.dart';
 import '../../domain/services/streak_service.dart';
 
@@ -64,3 +66,14 @@ final todayCompletedProvider = Provider<int>((ref) {
 final itemProvider = FutureProvider.family<ContentItem?, String>(
   (ref, id) => ref.read(contentRepositoryProvider).item(id),
 );
+
+final chapterCountsProvider = StreamProvider<({int read, int total})>(
+  (ref) => ref.watch(chapterRepositoryProvider).watchCounts(),
+);
+
+/// The chapter to continue with on Home. Recomputed when reading progress changes.
+final continueReadingProvider = FutureProvider<ChapterEntry?>((ref) async {
+  ref.watch(chapterCountsProvider);
+  final topics = await ref.watch(todayTopicsProvider.future);
+  return ref.read(chapterRepositoryProvider).continueReading(topics);
+});

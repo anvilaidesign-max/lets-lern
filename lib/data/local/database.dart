@@ -2,10 +2,14 @@ import 'package:drift/drift.dart';
 import 'package:drift_flutter/drift_flutter.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'tables/chapter_tables.dart';
 import 'tables/content_tables.dart';
+import 'tables/news_table.dart';
 import 'tables/user_tables.dart';
 
+export 'tables/chapter_tables.dart';
 export 'tables/content_tables.dart';
+export 'tables/news_table.dart';
 export 'tables/user_tables.dart';
 
 part 'database.g.dart';
@@ -21,6 +25,9 @@ part 'database.g.dart';
   Essays,
   Settings,
   SyncQueue,
+  NewsItems,
+  Chapters,
+  ChapterProgressEntries,
 ])
 class AppDatabase extends _$AppDatabase {
   AppDatabase(super.executor);
@@ -37,14 +44,20 @@ class AppDatabase extends _$AppDatabase {
   /// Bump this and add a step in [migration] for every schema change. User
   /// progress must never be dropped on upgrade (ARCHITECTURE.md 13.6).
   @override
-  int get schemaVersion => 1;
+  int get schemaVersion => 2;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
         onCreate: (m) => m.createAll(),
         onUpgrade: (m, from, to) async {
-          // Example for the next version:
-          // if (from < 2) await m.addColumn(contentItems, contentItems.someNewColumn);
+          // v2: cached news, topic books and chapter progress.
+          if (from < 2) {
+            await m.createTable(newsItems);
+            await m.createIndex(newsItemsCategoryPublished);
+            await m.createTable(chapters);
+            await m.createIndex(chaptersTopicPosition);
+            await m.createTable(chapterProgressEntries);
+          }
         },
         beforeOpen: (details) async {
           // The WorkManager background engine may open the same file.
@@ -59,6 +72,7 @@ class AppDatabase extends _$AppDatabase {
         await delete(dailyActivityEntries).go();
         await delete(essays).go();
         await delete(syncQueue).go();
+        await delete(chapterProgressEntries).go();
       });
 }
 

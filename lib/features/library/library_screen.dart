@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/theme/tokens.dart';
+import '../../data/repositories/chapter_repository.dart';
 import '../../data/repositories/content_repository.dart';
 import '../../domain/models/content_item.dart';
 import '../../domain/models/topic.dart';
@@ -10,6 +11,10 @@ import '../common/widgets.dart';
 
 final topicCountsProvider = StreamProvider<Map<String, int>>(
   (ref) => ref.watch(contentRepositoryProvider).watchCountsByTopic(),
+);
+
+final chapterCountsByTopicProvider = StreamProvider<Map<String, int>>(
+  (ref) => ref.watch(chapterRepositoryProvider).watchCountsByTopic(),
 );
 
 final savedItemsProvider = StreamProvider<List<ContentItem>>(
@@ -41,6 +46,7 @@ class _TopicsGrid extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final counts = ref.watch(topicCountsProvider).value ?? const {};
+    final chapters = ref.watch(chapterCountsByTopicProvider).value ?? const {};
     final theme = Theme.of(context);
     return GridView.builder(
       padding: const EdgeInsets.all(AppSpacing.md),
@@ -64,7 +70,7 @@ class _TopicsGrid extends ConsumerWidget {
               Text(topic.name, style: theme.textTheme.titleMedium, maxLines: 2, overflow: TextOverflow.ellipsis),
               const SizedBox(height: 2),
               Text(
-                '${counts[topic.code] ?? 0} cards',
+                '${chapters[topic.code] ?? 0} chapters · ${counts[topic.code] ?? 0} cards',
                 style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant),
               ),
             ],

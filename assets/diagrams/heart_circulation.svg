@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+<rect x="0" y="0" width="800" height="450" rx="18" fill="#FFFFFF"/>
+<text x="400" y="38" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="bold" fill="#0F172A" text-anchor="middle">The heart: two pumps, two circuits</text>
+<rect x="300" y="60" width="200" height="55" rx="12" fill="#FCE7F3" stroke="#DB2777" stroke-width="2.5"/><text x="400" y="85.5" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" fill="#0F172A" text-anchor="middle">Lungs</text><text x="400" y="109.5" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#64748B" text-anchor="middle">pick up O₂, drop CO₂</text>
+<rect x="300" y="370" width="200" height="55" rx="12" fill="#FFEDD5" stroke="#F97316" stroke-width="2.5"/><text x="400" y="395.5" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" fill="#0F172A" text-anchor="middle">Body</text><text x="400" y="419.5" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#64748B" text-anchor="middle">cells use O₂</text>
+<rect x="280" y="160" width="115" height="80" rx="12" fill="#DBEAFE" stroke="#2563EB" stroke-width="2.5"/>
+<text x="337" y="195" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#2563EB" text-anchor="middle">Right</text>
+<text x="337" y="215" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" fill="#2563EB" text-anchor="middle">atrium</text>
+<rect x="280" y="245" width="115" height="90" rx="12" fill="#BFDBFE" stroke="#2563EB" stroke-width="2.5"/>
+<text x="337" y="285" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#2563EB" text-anchor="middle">Right</text>
+<text x="337" y="305" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" fill="#2563EB" text-anchor="middle">ventricle</text>
+<rect x="405" y="160" width="115" height="80" rx="12" fill="#FEE2E2" stroke="#DC2626" stroke-width="2.5"/>
+<text x="462" y="195" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#DC2626" text-anchor="middle">Left</text>
+<text x="462" y="215" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" fill="#DC2626" text-anchor="middle">atrium</text>
+<rect x="405" y="245" width="115" height="90" rx="12" fill="#FECACA" stroke="#DC2626" stroke-width="4"/>
+<text x="462" y="285" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#DC2626" text-anchor="middle">Left</text>
+<text x="462" y="305" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" fill="#DC2626" text-anchor="middle">ventricle</text>
+<path d="M280,300 C200,300 200,90 298,90" stroke="#2563EB" stroke-width="5" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="298,90 284,82 284,98" fill="#2563EB" stroke="none" stroke-width="0"/>
+<text x="185" y="190" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#2563EB" text-anchor="end">to lungs</text>
+<path d="M502,90 C600,90 600,200 522,200" stroke="#DC2626" stroke-width="5" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="522,200 536,192 536,208" fill="#DC2626" stroke="none" stroke-width="0"/>
+<text x="610" y="150" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#DC2626" text-anchor="start">back, full of O₂</text>
+<path d="M520,300 C640,300 640,398 502,398" stroke="#DC2626" stroke-width="5" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="502,398 516,390 516,406" fill="#DC2626" stroke="none" stroke-width="0"/>
+<text x="650" y="350" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#DC2626" text-anchor="start">to the body</text>
+<path d="M298,398 C150,398 150,200 278,200" stroke="#2563EB" stroke-width="5" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="278,200 264,192 264,208" fill="#2563EB" stroke="none" stroke-width="0"/>
+<text x="150" y="330" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#2563EB" text-anchor="end">back, low in O₂</text>
+<text x="400" y="150" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" font-style="italic" fill="#64748B" text-anchor="middle">SA node sets the beat</text>
+</svg>

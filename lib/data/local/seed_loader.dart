@@ -5,6 +5,7 @@ import 'package:flutter/services.dart' show rootBundle;
 
 import '../../core/utils/logger.dart';
 import '../../domain/models/app_settings.dart';
+import '../repositories/chapter_repository.dart';
 import '../repositories/content_repository.dart';
 import 'daos/content_dao.dart';
 import 'daos/misc_daos.dart';
@@ -74,9 +75,30 @@ class SeedLoader {
       }).toList();
       await contentDao.upsertAll(toWrite);
 
+      // Topic books. Chapters the server updated later are kept.
+      var chapterCount = 0;
+      final chapterRows = <ChaptersCompanion>[];
+      for (final raw in (json['chapters'] as List? ?? const [])) {
+        final row = raw is Map ? ChapterRepository.toCompanion(Map<String, dynamic>.from(raw)) : null;
+        if (row != null) chapterRows.add(row);
+      }
+      if (chapterRows.isNotEmpty) {
+        final chapterUpdatedAt = {
+          for (final r in await db.select(db.chapters).get()) r.id: r.updatedAt,
+        };
+        final fresh = chapterRows.where((c) {
+          if (!chapterUpdatedAt.containsKey(c.id.value)) return true;
+          final local = chapterUpdatedAt[c.id.value];
+          final seed = c.updatedAt.value;
+          return local == null || (seed != null && seed.isAfter(local));
+        }).toList();
+        await db.batch((b) => b.insertAllOnConflictUpdate(db.chapters, fresh));
+        chapterCount = fresh.length;
+      }
+
       await SettingsDao(db).set(SettingKeys.seedVersion, '$version');
       settings[SettingKeys.seedVersion] = '$version';
-      AppLogger.info('Seed pack v$version loaded: ${toWrite.length} items, $skipped skipped');
+      AppLogger.info('Seed pack v$version loaded: ${toWrite.length} items, $chapterCount chapters, $skipped skipped');
     } catch (e, st) {
       AppLogger.error('Seed pack failed to load', e, st);
     }

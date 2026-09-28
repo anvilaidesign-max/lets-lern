@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+<rect x="0" y="0" width="800" height="450" rx="18" fill="#FFFFFF"/>
+<text x="400" y="38" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="bold" fill="#0F172A" text-anchor="middle">PLC scan cycle and a seal-in rung</text>
+<circle cx="190" cy="245" r="110" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+<rect x="130" y="95" width="120" height="50" rx="12" fill="#DCFCE7" stroke="#16A34A" stroke-width="2.5"/><text x="190" y="125" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#0F172A" text-anchor="middle">1 Read inputs</text>
+<rect x="250" y="220" width="120" height="50" rx="12" fill="#DBEAFE" stroke="#2563EB" stroke-width="2.5"/><text x="310" y="250" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#0F172A" text-anchor="middle">2 Run program</text>
+<rect x="130" y="345" width="120" height="50" rx="12" fill="#FFEDD5" stroke="#F97316" stroke-width="2.5"/><text x="190" y="375" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#0F172A" text-anchor="middle">3 Write outputs</text>
+<rect x="10" y="220" width="120" height="50" rx="12" fill="#EDE9FE" stroke="#7C3AED" stroke-width="2.5"/><text x="70" y="250" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#0F172A" text-anchor="middle">4 Comms, checks</text>
+<line x1="255" y1="140" x2="284.9253744160265" y2="204.1258023200568" stroke="#64748B" stroke-width="2.5" stroke-linecap="round"/><polygon points="290,215 278.9,206.9 290.9,201.3" fill="#64748B" stroke="none" stroke-width="0"/>
+<line x1="290" y1="275" x2="260.3665631459995" y2="334.266873708001" stroke="#64748B" stroke-width="2.5" stroke-linecap="round"/><polygon points="255,345 254.5,331.3 266.3,337.2" fill="#64748B" stroke="none" stroke-width="0"/>
+<line x1="125" y1="350" x2="95.07462558397349" y2="285.87419767994317" stroke="#64748B" stroke-width="2.5" stroke-linecap="round"/><polygon points="90,275 101.1,283.1 89.1,288.7" fill="#64748B" stroke="none" stroke-width="0"/>
+<line x1="90" y1="215" x2="119.92537441602651" y2="150.8741976799432" stroke="#64748B" stroke-width="2.5" stroke-linecap="round"/><polygon points="125,140 125.9,153.7 113.9,148.1" fill="#64748B" stroke="none" stroke-width="0"/>
+<text x="190" y="250" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="normal" font-style="italic" fill="#64748B" text-anchor="middle">every few ms</text>
+<line x1="420" y1="90" x2="420" y2="400" stroke="#334155" stroke-width="5" stroke-linecap="round"/>
+<line x1="770" y1="90" x2="770" y2="400" stroke="#334155" stroke-width="5" stroke-linecap="round"/>
+<line x1="420" y1="170" x2="470" y2="170" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<line x1="470" y1="150" x2="470" y2="190" stroke="#16A34A" stroke-width="4" stroke-linecap="round"/>
+<line x1="490" y1="150" x2="490" y2="190" stroke="#16A34A" stroke-width="4" stroke-linecap="round"/>
+<text x="480" y="135" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#16A34A" text-anchor="middle">Start</text>
+<line x1="490" y1="170" x2="560" y2="170" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<line x1="440" y1="170" x2="440" y2="260" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<line x1="440" y1="260" x2="470" y2="260" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<line x1="470" y1="240" x2="470" y2="280" stroke="#2563EB" stroke-width="4" stroke-linecap="round"/>
+<line x1="490" y1="240" x2="490" y2="280" stroke="#2563EB" stroke-width="4" stroke-linecap="round"/>
+<line x1="490" y1="260" x2="540" y2="260" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<line x1="540" y1="260" x2="540" y2="170" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<circle cx="440" cy="170" r="5" fill="#334155"/>
+<circle cx="540" cy="170" r="5" fill="#334155"/>
+<text x="480" y="305" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#2563EB" text-anchor="middle">Motor (seal-in)</text>
+<line x1="560" y1="150" x2="560" y2="190" stroke="#DC2626" stroke-width="4" stroke-linecap="round"/>
+<line x1="580" y1="150" x2="580" y2="190" stroke="#DC2626" stroke-width="4" stroke-linecap="round"/>
+<line x1="556" y1="192" x2="584" y2="148" stroke="#DC2626" stroke-width="3" stroke-linecap="round"/>
+<text x="570" y="135" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#DC2626" text-anchor="middle">Stop (NC)</text>
+<line x1="580" y1="170" x2="670" y2="170" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<path d="M680,150 A20,20 0 0,0 680,190" stroke="#F97316" stroke-width="3.5" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M710,150 A20,20 0 0,1 710,190" stroke="#F97316" stroke-width="3.5" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+<line x1="720" y1="170" x2="770" y2="170" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<text x="695" y="135" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#F97316" text-anchor="middle">Motor</text>
+<rect x="440" y="330" width="310" height="60" rx="12" fill="#FEF9C3" stroke="#EAB308" stroke-width="2.5"/>
+<text x="595" y="367" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#0F172A" text-anchor="middle">Motor = (Start OR Motor) AND NOT Stop</text>
+</svg>

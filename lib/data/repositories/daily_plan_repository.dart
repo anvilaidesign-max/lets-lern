@@ -79,7 +79,7 @@ class DailyPlanRepository {
   }
 
   Future<ContentItem?> nextItem({Set<String> exclude = const {}, ContentGroup? group, List<String>? topics}) async {
-    final pool = await ContentDao(_db).activeForTopics(topics ?? await topicsFor(DateTime.now()));
+    final pool = filterByLevel(await ContentDao(_db).activeForTopics(topics ?? await topicsFor(DateTime.now())), _settings.level);
     if (pool.isEmpty && topics == null) {
       // Today's topics have no content yet: fall back to every enabled topic.
       return nextItem(exclude: exclude, group: group, topics: _settings.effectiveTopics);
@@ -101,7 +101,7 @@ class DailyPlanRepository {
     if (pool.where((i) => i.isChallenge).length < count) {
       pool = await ContentDao(_db).activeForTopics(_settings.effectiveTopics);
     }
-    final challenges = pool.where((i) => i.isChallenge).toList();
+    final challenges = filterByLevel(pool.where((i) => i.isChallenge).toList(), _settings.level);
     final progress = await ProgressDao(_db).forItems(challenges.map((i) => i.id));
     return NextItemPicker.pickMany(
       count: count,
@@ -134,6 +134,7 @@ class DailyPlanRepository {
       if (pool == null) {
         pool = await contentDao.activeForTopics(await topicsFor(slot.day));
         if (pool.isEmpty) pool = await contentDao.activeForTopics(settings.effectiveTopics);
+        pool = filterByLevel(pool, settings.level);
         poolCache[key] = pool;
       }
       final progress = await ProgressDao(_db).forItems(pool.map((i) => i.id));

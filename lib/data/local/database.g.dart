@@ -3850,6 +3850,1751 @@ class SyncQueueCompanion extends UpdateCompanion<SyncQueueRow> {
   }
 }
 
+class $NewsItemsTable extends NewsItems
+    with TableInfo<$NewsItemsTable, NewsRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $NewsItemsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _categoryMeta = const VerificationMeta(
+    'category',
+  );
+  @override
+  late final GeneratedColumn<String> category = GeneratedColumn<String>(
+    'category',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _sourceMeta = const VerificationMeta('source');
+  @override
+  late final GeneratedColumn<String> source = GeneratedColumn<String>(
+    'source',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _titleMeta = const VerificationMeta('title');
+  @override
+  late final GeneratedColumn<String> title = GeneratedColumn<String>(
+    'title',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _summaryMeta = const VerificationMeta(
+    'summary',
+  );
+  @override
+  late final GeneratedColumn<String> summary = GeneratedColumn<String>(
+    'summary',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _linkMeta = const VerificationMeta('link');
+  @override
+  late final GeneratedColumn<String> link = GeneratedColumn<String>(
+    'link',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _imageUrlMeta = const VerificationMeta(
+    'imageUrl',
+  );
+  @override
+  late final GeneratedColumn<String> imageUrl = GeneratedColumn<String>(
+    'image_url',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _publishedAtMeta = const VerificationMeta(
+    'publishedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> publishedAt = GeneratedColumn<DateTime>(
+    'published_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _fetchedAtMeta = const VerificationMeta(
+    'fetchedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> fetchedAt = GeneratedColumn<DateTime>(
+    'fetched_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    category,
+    source,
+    title,
+    summary,
+    link,
+    imageUrl,
+    publishedAt,
+    fetchedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'news_items';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<NewsRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('category')) {
+      context.handle(
+        _categoryMeta,
+        category.isAcceptableOrUnknown(data['category']!, _categoryMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_categoryMeta);
+    }
+    if (data.containsKey('source')) {
+      context.handle(
+        _sourceMeta,
+        source.isAcceptableOrUnknown(data['source']!, _sourceMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_sourceMeta);
+    }
+    if (data.containsKey('title')) {
+      context.handle(
+        _titleMeta,
+        title.isAcceptableOrUnknown(data['title']!, _titleMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_titleMeta);
+    }
+    if (data.containsKey('summary')) {
+      context.handle(
+        _summaryMeta,
+        summary.isAcceptableOrUnknown(data['summary']!, _summaryMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_summaryMeta);
+    }
+    if (data.containsKey('link')) {
+      context.handle(
+        _linkMeta,
+        link.isAcceptableOrUnknown(data['link']!, _linkMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_linkMeta);
+    }
+    if (data.containsKey('image_url')) {
+      context.handle(
+        _imageUrlMeta,
+        imageUrl.isAcceptableOrUnknown(data['image_url']!, _imageUrlMeta),
+      );
+    }
+    if (data.containsKey('published_at')) {
+      context.handle(
+        _publishedAtMeta,
+        publishedAt.isAcceptableOrUnknown(
+          data['published_at']!,
+          _publishedAtMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_publishedAtMeta);
+    }
+    if (data.containsKey('fetched_at')) {
+      context.handle(
+        _fetchedAtMeta,
+        fetchedAt.isAcceptableOrUnknown(data['fetched_at']!, _fetchedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_fetchedAtMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  NewsRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return NewsRow(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      category: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}category'],
+      )!,
+      source: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}source'],
+      )!,
+      title: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}title'],
+      )!,
+      summary: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}summary'],
+      )!,
+      link: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}link'],
+      )!,
+      imageUrl: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}image_url'],
+      ),
+      publishedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}published_at'],
+      )!,
+      fetchedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}fetched_at'],
+      )!,
+    );
+  }
+
+  @override
+  $NewsItemsTable createAlias(String alias) {
+    return $NewsItemsTable(attachedDatabase, alias);
+  }
+}
+
+class NewsRow extends DataClass implements Insertable<NewsRow> {
+  final String id;
+  final String category;
+  final String source;
+  final String title;
+  final String summary;
+  final String link;
+  final String? imageUrl;
+  final DateTime publishedAt;
+  final DateTime fetchedAt;
+  const NewsRow({
+    required this.id,
+    required this.category,
+    required this.source,
+    required this.title,
+    required this.summary,
+    required this.link,
+    this.imageUrl,
+    required this.publishedAt,
+    required this.fetchedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['category'] = Variable<String>(category);
+    map['source'] = Variable<String>(source);
+    map['title'] = Variable<String>(title);
+    map['summary'] = Variable<String>(summary);
+    map['link'] = Variable<String>(link);
+    if (!nullToAbsent || imageUrl != null) {
+      map['image_url'] = Variable<String>(imageUrl);
+    }
+    map['published_at'] = Variable<DateTime>(publishedAt);
+    map['fetched_at'] = Variable<DateTime>(fetchedAt);
+    return map;
+  }
+
+  NewsItemsCompanion toCompanion(bool nullToAbsent) {
+    return NewsItemsCompanion(
+      id: Value(id),
+      category: Value(category),
+      source: Value(source),
+      title: Value(title),
+      summary: Value(summary),
+      link: Value(link),
+      imageUrl: imageUrl == null && nullToAbsent
+          ? const Value.absent()
+          : Value(imageUrl),
+      publishedAt: Value(publishedAt),
+      fetchedAt: Value(fetchedAt),
+    );
+  }
+
+  factory NewsRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return NewsRow(
+      id: serializer.fromJson<String>(json['id']),
+      category: serializer.fromJson<String>(json['category']),
+      source: serializer.fromJson<String>(json['source']),
+      title: serializer.fromJson<String>(json['title']),
+      summary: serializer.fromJson<String>(json['summary']),
+      link: serializer.fromJson<String>(json['link']),
+      imageUrl: serializer.fromJson<String?>(json['imageUrl']),
+      publishedAt: serializer.fromJson<DateTime>(json['publishedAt']),
+      fetchedAt: serializer.fromJson<DateTime>(json['fetchedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'category': serializer.toJson<String>(category),
+      'source': serializer.toJson<String>(source),
+      'title': serializer.toJson<String>(title),
+      'summary': serializer.toJson<String>(summary),
+      'link': serializer.toJson<String>(link),
+      'imageUrl': serializer.toJson<String?>(imageUrl),
+      'publishedAt': serializer.toJson<DateTime>(publishedAt),
+      'fetchedAt': serializer.toJson<DateTime>(fetchedAt),
+    };
+  }
+
+  NewsRow copyWith({
+    String? id,
+    String? category,
+    String? source,
+    String? title,
+    String? summary,
+    String? link,
+    Value<String?> imageUrl = const Value.absent(),
+    DateTime? publishedAt,
+    DateTime? fetchedAt,
+  }) => NewsRow(
+    id: id ?? this.id,
+    category: category ?? this.category,
+    source: source ?? this.source,
+    title: title ?? this.title,
+    summary: summary ?? this.summary,
+    link: link ?? this.link,
+    imageUrl: imageUrl.present ? imageUrl.value : this.imageUrl,
+    publishedAt: publishedAt ?? this.publishedAt,
+    fetchedAt: fetchedAt ?? this.fetchedAt,
+  );
+  NewsRow copyWithCompanion(NewsItemsCompanion data) {
+    return NewsRow(
+      id: data.id.present ? data.id.value : this.id,
+      category: data.category.present ? data.category.value : this.category,
+      source: data.source.present ? data.source.value : this.source,
+      title: data.title.present ? data.title.value : this.title,
+      summary: data.summary.present ? data.summary.value : this.summary,
+      link: data.link.present ? data.link.value : this.link,
+      imageUrl: data.imageUrl.present ? data.imageUrl.value : this.imageUrl,
+      publishedAt: data.publishedAt.present
+          ? data.publishedAt.value
+          : this.publishedAt,
+      fetchedAt: data.fetchedAt.present ? data.fetchedAt.value : this.fetchedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('NewsRow(')
+          ..write('id: $id, ')
+          ..write('category: $category, ')
+          ..write('source: $source, ')
+          ..write('title: $title, ')
+          ..write('summary: $summary, ')
+          ..write('link: $link, ')
+          ..write('imageUrl: $imageUrl, ')
+          ..write('publishedAt: $publishedAt, ')
+          ..write('fetchedAt: $fetchedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    category,
+    source,
+    title,
+    summary,
+    link,
+    imageUrl,
+    publishedAt,
+    fetchedAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is NewsRow &&
+          other.id == this.id &&
+          other.category == this.category &&
+          other.source == this.source &&
+          other.title == this.title &&
+          other.summary == this.summary &&
+          other.link == this.link &&
+          other.imageUrl == this.imageUrl &&
+          other.publishedAt == this.publishedAt &&
+          other.fetchedAt == this.fetchedAt);
+}
+
+class NewsItemsCompanion extends UpdateCompanion<NewsRow> {
+  final Value<String> id;
+  final Value<String> category;
+  final Value<String> source;
+  final Value<String> title;
+  final Value<String> summary;
+  final Value<String> link;
+  final Value<String?> imageUrl;
+  final Value<DateTime> publishedAt;
+  final Value<DateTime> fetchedAt;
+  final Value<int> rowid;
+  const NewsItemsCompanion({
+    this.id = const Value.absent(),
+    this.category = const Value.absent(),
+    this.source = const Value.absent(),
+    this.title = const Value.absent(),
+    this.summary = const Value.absent(),
+    this.link = const Value.absent(),
+    this.imageUrl = const Value.absent(),
+    this.publishedAt = const Value.absent(),
+    this.fetchedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  NewsItemsCompanion.insert({
+    required String id,
+    required String category,
+    required String source,
+    required String title,
+    required String summary,
+    required String link,
+    this.imageUrl = const Value.absent(),
+    required DateTime publishedAt,
+    required DateTime fetchedAt,
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       category = Value(category),
+       source = Value(source),
+       title = Value(title),
+       summary = Value(summary),
+       link = Value(link),
+       publishedAt = Value(publishedAt),
+       fetchedAt = Value(fetchedAt);
+  static Insertable<NewsRow> custom({
+    Expression<String>? id,
+    Expression<String>? category,
+    Expression<String>? source,
+    Expression<String>? title,
+    Expression<String>? summary,
+    Expression<String>? link,
+    Expression<String>? imageUrl,
+    Expression<DateTime>? publishedAt,
+    Expression<DateTime>? fetchedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (category != null) 'category': category,
+      if (source != null) 'source': source,
+      if (title != null) 'title': title,
+      if (summary != null) 'summary': summary,
+      if (link != null) 'link': link,
+      if (imageUrl != null) 'image_url': imageUrl,
+      if (publishedAt != null) 'published_at': publishedAt,
+      if (fetchedAt != null) 'fetched_at': fetchedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  NewsItemsCompanion copyWith({
+    Value<String>? id,
+    Value<String>? category,
+    Value<String>? source,
+    Value<String>? title,
+    Value<String>? summary,
+    Value<String>? link,
+    Value<String?>? imageUrl,
+    Value<DateTime>? publishedAt,
+    Value<DateTime>? fetchedAt,
+    Value<int>? rowid,
+  }) {
+    return NewsItemsCompanion(
+      id: id ?? this.id,
+      category: category ?? this.category,
+      source: source ?? this.source,
+      title: title ?? this.title,
+      summary: summary ?? this.summary,
+      link: link ?? this.link,
+      imageUrl: imageUrl ?? this.imageUrl,
+      publishedAt: publishedAt ?? this.publishedAt,
+      fetchedAt: fetchedAt ?? this.fetchedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (category.present) {
+      map['category'] = Variable<String>(category.value);
+    }
+    if (source.present) {
+      map['source'] = Variable<String>(source.value);
+    }
+    if (title.present) {
+      map['title'] = Variable<String>(title.value);
+    }
+    if (summary.present) {
+      map['summary'] = Variable<String>(summary.value);
+    }
+    if (link.present) {
+      map['link'] = Variable<String>(link.value);
+    }
+    if (imageUrl.present) {
+      map['image_url'] = Variable<String>(imageUrl.value);
+    }
+    if (publishedAt.present) {
+      map['published_at'] = Variable<DateTime>(publishedAt.value);
+    }
+    if (fetchedAt.present) {
+      map['fetched_at'] = Variable<DateTime>(fetchedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('NewsItemsCompanion(')
+          ..write('id: $id, ')
+          ..write('category: $category, ')
+          ..write('source: $source, ')
+          ..write('title: $title, ')
+          ..write('summary: $summary, ')
+          ..write('link: $link, ')
+          ..write('imageUrl: $imageUrl, ')
+          ..write('publishedAt: $publishedAt, ')
+          ..write('fetchedAt: $fetchedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $ChaptersTable extends Chapters
+    with TableInfo<$ChaptersTable, ChapterRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ChaptersTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _topicCodeMeta = const VerificationMeta(
+    'topicCode',
+  );
+  @override
+  late final GeneratedColumn<String> topicCode = GeneratedColumn<String>(
+    'topic_code',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _positionMeta = const VerificationMeta(
+    'position',
+  );
+  @override
+  late final GeneratedColumn<int> position = GeneratedColumn<int>(
+    'position',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _titleMeta = const VerificationMeta('title');
+  @override
+  late final GeneratedColumn<String> title = GeneratedColumn<String>(
+    'title',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _summaryMeta = const VerificationMeta(
+    'summary',
+  );
+  @override
+  late final GeneratedColumn<String> summary = GeneratedColumn<String>(
+    'summary',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _bodyMeta = const VerificationMeta('body');
+  @override
+  late final GeneratedColumn<String> body = GeneratedColumn<String>(
+    'body',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _keyPointsJsonMeta = const VerificationMeta(
+    'keyPointsJson',
+  );
+  @override
+  late final GeneratedColumn<String> keyPointsJson = GeneratedColumn<String>(
+    'key_points_json',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('[]'),
+  );
+  static const VerificationMeta _quizJsonMeta = const VerificationMeta(
+    'quizJson',
+  );
+  @override
+  late final GeneratedColumn<String> quizJson = GeneratedColumn<String>(
+    'quiz_json',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('[]'),
+  );
+  static const VerificationMeta _difficultyMeta = const VerificationMeta(
+    'difficulty',
+  );
+  @override
+  late final GeneratedColumn<int> difficulty = GeneratedColumn<int>(
+    'difficulty',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(1),
+  );
+  static const VerificationMeta _sourcesJsonMeta = const VerificationMeta(
+    'sourcesJson',
+  );
+  @override
+  late final GeneratedColumn<String> sourcesJson = GeneratedColumn<String>(
+    'sources_json',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('[]'),
+  );
+  static const VerificationMeta _isActiveMeta = const VerificationMeta(
+    'isActive',
+  );
+  @override
+  late final GeneratedColumn<bool> isActive = GeneratedColumn<bool>(
+    'is_active',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("is_active" IN (0, 1))',
+    ),
+    defaultValue: const Constant(true),
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    topicCode,
+    position,
+    title,
+    summary,
+    body,
+    keyPointsJson,
+    quizJson,
+    difficulty,
+    sourcesJson,
+    isActive,
+    updatedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'chapters';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<ChapterRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('topic_code')) {
+      context.handle(
+        _topicCodeMeta,
+        topicCode.isAcceptableOrUnknown(data['topic_code']!, _topicCodeMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_topicCodeMeta);
+    }
+    if (data.containsKey('position')) {
+      context.handle(
+        _positionMeta,
+        position.isAcceptableOrUnknown(data['position']!, _positionMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_positionMeta);
+    }
+    if (data.containsKey('title')) {
+      context.handle(
+        _titleMeta,
+        title.isAcceptableOrUnknown(data['title']!, _titleMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_titleMeta);
+    }
+    if (data.containsKey('summary')) {
+      context.handle(
+        _summaryMeta,
+        summary.isAcceptableOrUnknown(data['summary']!, _summaryMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_summaryMeta);
+    }
+    if (data.containsKey('body')) {
+      context.handle(
+        _bodyMeta,
+        body.isAcceptableOrUnknown(data['body']!, _bodyMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_bodyMeta);
+    }
+    if (data.containsKey('key_points_json')) {
+      context.handle(
+        _keyPointsJsonMeta,
+        keyPointsJson.isAcceptableOrUnknown(
+          data['key_points_json']!,
+          _keyPointsJsonMeta,
+        ),
+      );
+    }
+    if (data.containsKey('quiz_json')) {
+      context.handle(
+        _quizJsonMeta,
+        quizJson.isAcceptableOrUnknown(data['quiz_json']!, _quizJsonMeta),
+      );
+    }
+    if (data.containsKey('difficulty')) {
+      context.handle(
+        _difficultyMeta,
+        difficulty.isAcceptableOrUnknown(data['difficulty']!, _difficultyMeta),
+      );
+    }
+    if (data.containsKey('sources_json')) {
+      context.handle(
+        _sourcesJsonMeta,
+        sourcesJson.isAcceptableOrUnknown(
+          data['sources_json']!,
+          _sourcesJsonMeta,
+        ),
+      );
+    }
+    if (data.containsKey('is_active')) {
+      context.handle(
+        _isActiveMeta,
+        isActive.isAcceptableOrUnknown(data['is_active']!, _isActiveMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  ChapterRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ChapterRow(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      topicCode: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}topic_code'],
+      )!,
+      position: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}position'],
+      )!,
+      title: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}title'],
+      )!,
+      summary: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}summary'],
+      )!,
+      body: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}body'],
+      )!,
+      keyPointsJson: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}key_points_json'],
+      )!,
+      quizJson: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}quiz_json'],
+      )!,
+      difficulty: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}difficulty'],
+      )!,
+      sourcesJson: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}sources_json'],
+      )!,
+      isActive: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}is_active'],
+      )!,
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      ),
+    );
+  }
+
+  @override
+  $ChaptersTable createAlias(String alias) {
+    return $ChaptersTable(attachedDatabase, alias);
+  }
+}
+
+class ChapterRow extends DataClass implements Insertable<ChapterRow> {
+  final String id;
+  final String topicCode;
+  final int position;
+  final String title;
+  final String summary;
+  final String body;
+  final String keyPointsJson;
+  final String quizJson;
+  final int difficulty;
+  final String sourcesJson;
+  final bool isActive;
+  final DateTime? updatedAt;
+  const ChapterRow({
+    required this.id,
+    required this.topicCode,
+    required this.position,
+    required this.title,
+    required this.summary,
+    required this.body,
+    required this.keyPointsJson,
+    required this.quizJson,
+    required this.difficulty,
+    required this.sourcesJson,
+    required this.isActive,
+    this.updatedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['topic_code'] = Variable<String>(topicCode);
+    map['position'] = Variable<int>(position);
+    map['title'] = Variable<String>(title);
+    map['summary'] = Variable<String>(summary);
+    map['body'] = Variable<String>(body);
+    map['key_points_json'] = Variable<String>(keyPointsJson);
+    map['quiz_json'] = Variable<String>(quizJson);
+    map['difficulty'] = Variable<int>(difficulty);
+    map['sources_json'] = Variable<String>(sourcesJson);
+    map['is_active'] = Variable<bool>(isActive);
+    if (!nullToAbsent || updatedAt != null) {
+      map['updated_at'] = Variable<DateTime>(updatedAt);
+    }
+    return map;
+  }
+
+  ChaptersCompanion toCompanion(bool nullToAbsent) {
+    return ChaptersCompanion(
+      id: Value(id),
+      topicCode: Value(topicCode),
+      position: Value(position),
+      title: Value(title),
+      summary: Value(summary),
+      body: Value(body),
+      keyPointsJson: Value(keyPointsJson),
+      quizJson: Value(quizJson),
+      difficulty: Value(difficulty),
+      sourcesJson: Value(sourcesJson),
+      isActive: Value(isActive),
+      updatedAt: updatedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedAt),
+    );
+  }
+
+  factory ChapterRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return ChapterRow(
+      id: serializer.fromJson<String>(json['id']),
+      topicCode: serializer.fromJson<String>(json['topicCode']),
+      position: serializer.fromJson<int>(json['position']),
+      title: serializer.fromJson<String>(json['title']),
+      summary: serializer.fromJson<String>(json['summary']),
+      body: serializer.fromJson<String>(json['body']),
+      keyPointsJson: serializer.fromJson<String>(json['keyPointsJson']),
+      quizJson: serializer.fromJson<String>(json['quizJson']),
+      difficulty: serializer.fromJson<int>(json['difficulty']),
+      sourcesJson: serializer.fromJson<String>(json['sourcesJson']),
+      isActive: serializer.fromJson<bool>(json['isActive']),
+      updatedAt: serializer.fromJson<DateTime?>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'topicCode': serializer.toJson<String>(topicCode),
+      'position': serializer.toJson<int>(position),
+      'title': serializer.toJson<String>(title),
+      'summary': serializer.toJson<String>(summary),
+      'body': serializer.toJson<String>(body),
+      'keyPointsJson': serializer.toJson<String>(keyPointsJson),
+      'quizJson': serializer.toJson<String>(quizJson),
+      'difficulty': serializer.toJson<int>(difficulty),
+      'sourcesJson': serializer.toJson<String>(sourcesJson),
+      'isActive': serializer.toJson<bool>(isActive),
+      'updatedAt': serializer.toJson<DateTime?>(updatedAt),
+    };
+  }
+
+  ChapterRow copyWith({
+    String? id,
+    String? topicCode,
+    int? position,
+    String? title,
+    String? summary,
+    String? body,
+    String? keyPointsJson,
+    String? quizJson,
+    int? difficulty,
+    String? sourcesJson,
+    bool? isActive,
+    Value<DateTime?> updatedAt = const Value.absent(),
+  }) => ChapterRow(
+    id: id ?? this.id,
+    topicCode: topicCode ?? this.topicCode,
+    position: position ?? this.position,
+    title: title ?? this.title,
+    summary: summary ?? this.summary,
+    body: body ?? this.body,
+    keyPointsJson: keyPointsJson ?? this.keyPointsJson,
+    quizJson: quizJson ?? this.quizJson,
+    difficulty: difficulty ?? this.difficulty,
+    sourcesJson: sourcesJson ?? this.sourcesJson,
+    isActive: isActive ?? this.isActive,
+    updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
+  );
+  ChapterRow copyWithCompanion(ChaptersCompanion data) {
+    return ChapterRow(
+      id: data.id.present ? data.id.value : this.id,
+      topicCode: data.topicCode.present ? data.topicCode.value : this.topicCode,
+      position: data.position.present ? data.position.value : this.position,
+      title: data.title.present ? data.title.value : this.title,
+      summary: data.summary.present ? data.summary.value : this.summary,
+      body: data.body.present ? data.body.value : this.body,
+      keyPointsJson: data.keyPointsJson.present
+          ? data.keyPointsJson.value
+          : this.keyPointsJson,
+      quizJson: data.quizJson.present ? data.quizJson.value : this.quizJson,
+      difficulty: data.difficulty.present
+          ? data.difficulty.value
+          : this.difficulty,
+      sourcesJson: data.sourcesJson.present
+          ? data.sourcesJson.value
+          : this.sourcesJson,
+      isActive: data.isActive.present ? data.isActive.value : this.isActive,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ChapterRow(')
+          ..write('id: $id, ')
+          ..write('topicCode: $topicCode, ')
+          ..write('position: $position, ')
+          ..write('title: $title, ')
+          ..write('summary: $summary, ')
+          ..write('body: $body, ')
+          ..write('keyPointsJson: $keyPointsJson, ')
+          ..write('quizJson: $quizJson, ')
+          ..write('difficulty: $difficulty, ')
+          ..write('sourcesJson: $sourcesJson, ')
+          ..write('isActive: $isActive, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    topicCode,
+    position,
+    title,
+    summary,
+    body,
+    keyPointsJson,
+    quizJson,
+    difficulty,
+    sourcesJson,
+    isActive,
+    updatedAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is ChapterRow &&
+          other.id == this.id &&
+          other.topicCode == this.topicCode &&
+          other.position == this.position &&
+          other.title == this.title &&
+          other.summary == this.summary &&
+          other.body == this.body &&
+          other.keyPointsJson == this.keyPointsJson &&
+          other.quizJson == this.quizJson &&
+          other.difficulty == this.difficulty &&
+          other.sourcesJson == this.sourcesJson &&
+          other.isActive == this.isActive &&
+          other.updatedAt == this.updatedAt);
+}
+
+class ChaptersCompanion extends UpdateCompanion<ChapterRow> {
+  final Value<String> id;
+  final Value<String> topicCode;
+  final Value<int> position;
+  final Value<String> title;
+  final Value<String> summary;
+  final Value<String> body;
+  final Value<String> keyPointsJson;
+  final Value<String> quizJson;
+  final Value<int> difficulty;
+  final Value<String> sourcesJson;
+  final Value<bool> isActive;
+  final Value<DateTime?> updatedAt;
+  final Value<int> rowid;
+  const ChaptersCompanion({
+    this.id = const Value.absent(),
+    this.topicCode = const Value.absent(),
+    this.position = const Value.absent(),
+    this.title = const Value.absent(),
+    this.summary = const Value.absent(),
+    this.body = const Value.absent(),
+    this.keyPointsJson = const Value.absent(),
+    this.quizJson = const Value.absent(),
+    this.difficulty = const Value.absent(),
+    this.sourcesJson = const Value.absent(),
+    this.isActive = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  ChaptersCompanion.insert({
+    required String id,
+    required String topicCode,
+    required int position,
+    required String title,
+    required String summary,
+    required String body,
+    this.keyPointsJson = const Value.absent(),
+    this.quizJson = const Value.absent(),
+    this.difficulty = const Value.absent(),
+    this.sourcesJson = const Value.absent(),
+    this.isActive = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       topicCode = Value(topicCode),
+       position = Value(position),
+       title = Value(title),
+       summary = Value(summary),
+       body = Value(body);
+  static Insertable<ChapterRow> custom({
+    Expression<String>? id,
+    Expression<String>? topicCode,
+    Expression<int>? position,
+    Expression<String>? title,
+    Expression<String>? summary,
+    Expression<String>? body,
+    Expression<String>? keyPointsJson,
+    Expression<String>? quizJson,
+    Expression<int>? difficulty,
+    Expression<String>? sourcesJson,
+    Expression<bool>? isActive,
+    Expression<DateTime>? updatedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (topicCode != null) 'topic_code': topicCode,
+      if (position != null) 'position': position,
+      if (title != null) 'title': title,
+      if (summary != null) 'summary': summary,
+      if (body != null) 'body': body,
+      if (keyPointsJson != null) 'key_points_json': keyPointsJson,
+      if (quizJson != null) 'quiz_json': quizJson,
+      if (difficulty != null) 'difficulty': difficulty,
+      if (sourcesJson != null) 'sources_json': sourcesJson,
+      if (isActive != null) 'is_active': isActive,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  ChaptersCompanion copyWith({
+    Value<String>? id,
+    Value<String>? topicCode,
+    Value<int>? position,
+    Value<String>? title,
+    Value<String>? summary,
+    Value<String>? body,
+    Value<String>? keyPointsJson,
+    Value<String>? quizJson,
+    Value<int>? difficulty,
+    Value<String>? sourcesJson,
+    Value<bool>? isActive,
+    Value<DateTime?>? updatedAt,
+    Value<int>? rowid,
+  }) {
+    return ChaptersCompanion(
+      id: id ?? this.id,
+      topicCode: topicCode ?? this.topicCode,
+      position: position ?? this.position,
+      title: title ?? this.title,
+      summary: summary ?? this.summary,
+      body: body ?? this.body,
+      keyPointsJson: keyPointsJson ?? this.keyPointsJson,
+      quizJson: quizJson ?? this.quizJson,
+      difficulty: difficulty ?? this.difficulty,
+      sourcesJson: sourcesJson ?? this.sourcesJson,
+      isActive: isActive ?? this.isActive,
+      updatedAt: updatedAt ?? this.updatedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (topicCode.present) {
+      map['topic_code'] = Variable<String>(topicCode.value);
+    }
+    if (position.present) {
+      map['position'] = Variable<int>(position.value);
+    }
+    if (title.present) {
+      map['title'] = Variable<String>(title.value);
+    }
+    if (summary.present) {
+      map['summary'] = Variable<String>(summary.value);
+    }
+    if (body.present) {
+      map['body'] = Variable<String>(body.value);
+    }
+    if (keyPointsJson.present) {
+      map['key_points_json'] = Variable<String>(keyPointsJson.value);
+    }
+    if (quizJson.present) {
+      map['quiz_json'] = Variable<String>(quizJson.value);
+    }
+    if (difficulty.present) {
+      map['difficulty'] = Variable<int>(difficulty.value);
+    }
+    if (sourcesJson.present) {
+      map['sources_json'] = Variable<String>(sourcesJson.value);
+    }
+    if (isActive.present) {
+      map['is_active'] = Variable<bool>(isActive.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ChaptersCompanion(')
+          ..write('id: $id, ')
+          ..write('topicCode: $topicCode, ')
+          ..write('position: $position, ')
+          ..write('title: $title, ')
+          ..write('summary: $summary, ')
+          ..write('body: $body, ')
+          ..write('keyPointsJson: $keyPointsJson, ')
+          ..write('quizJson: $quizJson, ')
+          ..write('difficulty: $difficulty, ')
+          ..write('sourcesJson: $sourcesJson, ')
+          ..write('isActive: $isActive, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $ChapterProgressEntriesTable extends ChapterProgressEntries
+    with TableInfo<$ChapterProgressEntriesTable, ChapterProgressRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ChapterProgressEntriesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _chapterIdMeta = const VerificationMeta(
+    'chapterId',
+  );
+  @override
+  late final GeneratedColumn<String> chapterId = GeneratedColumn<String>(
+    'chapter_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _readAtMeta = const VerificationMeta('readAt');
+  @override
+  late final GeneratedColumn<DateTime> readAt = GeneratedColumn<DateTime>(
+    'read_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _bestScoreMeta = const VerificationMeta(
+    'bestScore',
+  );
+  @override
+  late final GeneratedColumn<int> bestScore = GeneratedColumn<int>(
+    'best_score',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _lastScoreMeta = const VerificationMeta(
+    'lastScore',
+  );
+  @override
+  late final GeneratedColumn<int> lastScore = GeneratedColumn<int>(
+    'last_score',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _attemptsMeta = const VerificationMeta(
+    'attempts',
+  );
+  @override
+  late final GeneratedColumn<int> attempts = GeneratedColumn<int>(
+    'attempts',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(0),
+  );
+  static const VerificationMeta _totalQuestionsMeta = const VerificationMeta(
+    'totalQuestions',
+  );
+  @override
+  late final GeneratedColumn<int> totalQuestions = GeneratedColumn<int>(
+    'total_questions',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    chapterId,
+    readAt,
+    bestScore,
+    lastScore,
+    attempts,
+    totalQuestions,
+    updatedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'chapter_progress';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<ChapterProgressRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('chapter_id')) {
+      context.handle(
+        _chapterIdMeta,
+        chapterId.isAcceptableOrUnknown(data['chapter_id']!, _chapterIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_chapterIdMeta);
+    }
+    if (data.containsKey('read_at')) {
+      context.handle(
+        _readAtMeta,
+        readAt.isAcceptableOrUnknown(data['read_at']!, _readAtMeta),
+      );
+    }
+    if (data.containsKey('best_score')) {
+      context.handle(
+        _bestScoreMeta,
+        bestScore.isAcceptableOrUnknown(data['best_score']!, _bestScoreMeta),
+      );
+    }
+    if (data.containsKey('last_score')) {
+      context.handle(
+        _lastScoreMeta,
+        lastScore.isAcceptableOrUnknown(data['last_score']!, _lastScoreMeta),
+      );
+    }
+    if (data.containsKey('attempts')) {
+      context.handle(
+        _attemptsMeta,
+        attempts.isAcceptableOrUnknown(data['attempts']!, _attemptsMeta),
+      );
+    }
+    if (data.containsKey('total_questions')) {
+      context.handle(
+        _totalQuestionsMeta,
+        totalQuestions.isAcceptableOrUnknown(
+          data['total_questions']!,
+          _totalQuestionsMeta,
+        ),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {chapterId};
+  @override
+  ChapterProgressRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ChapterProgressRow(
+      chapterId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}chapter_id'],
+      )!,
+      readAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}read_at'],
+      ),
+      bestScore: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}best_score'],
+      ),
+      lastScore: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}last_score'],
+      ),
+      attempts: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}attempts'],
+      )!,
+      totalQuestions: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}total_questions'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      ),
+    );
+  }
+
+  @override
+  $ChapterProgressEntriesTable createAlias(String alias) {
+    return $ChapterProgressEntriesTable(attachedDatabase, alias);
+  }
+}
+
+class ChapterProgressRow extends DataClass
+    implements Insertable<ChapterProgressRow> {
+  final String chapterId;
+  final DateTime? readAt;
+  final int? bestScore;
+  final int? lastScore;
+  final int attempts;
+  final int? totalQuestions;
+  final DateTime? updatedAt;
+  const ChapterProgressRow({
+    required this.chapterId,
+    this.readAt,
+    this.bestScore,
+    this.lastScore,
+    required this.attempts,
+    this.totalQuestions,
+    this.updatedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['chapter_id'] = Variable<String>(chapterId);
+    if (!nullToAbsent || readAt != null) {
+      map['read_at'] = Variable<DateTime>(readAt);
+    }
+    if (!nullToAbsent || bestScore != null) {
+      map['best_score'] = Variable<int>(bestScore);
+    }
+    if (!nullToAbsent || lastScore != null) {
+      map['last_score'] = Variable<int>(lastScore);
+    }
+    map['attempts'] = Variable<int>(attempts);
+    if (!nullToAbsent || totalQuestions != null) {
+      map['total_questions'] = Variable<int>(totalQuestions);
+    }
+    if (!nullToAbsent || updatedAt != null) {
+      map['updated_at'] = Variable<DateTime>(updatedAt);
+    }
+    return map;
+  }
+
+  ChapterProgressEntriesCompanion toCompanion(bool nullToAbsent) {
+    return ChapterProgressEntriesCompanion(
+      chapterId: Value(chapterId),
+      readAt: readAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(readAt),
+      bestScore: bestScore == null && nullToAbsent
+          ? const Value.absent()
+          : Value(bestScore),
+      lastScore: lastScore == null && nullToAbsent
+          ? const Value.absent()
+          : Value(lastScore),
+      attempts: Value(attempts),
+      totalQuestions: totalQuestions == null && nullToAbsent
+          ? const Value.absent()
+          : Value(totalQuestions),
+      updatedAt: updatedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(updatedAt),
+    );
+  }
+
+  factory ChapterProgressRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return ChapterProgressRow(
+      chapterId: serializer.fromJson<String>(json['chapterId']),
+      readAt: serializer.fromJson<DateTime?>(json['readAt']),
+      bestScore: serializer.fromJson<int?>(json['bestScore']),
+      lastScore: serializer.fromJson<int?>(json['lastScore']),
+      attempts: serializer.fromJson<int>(json['attempts']),
+      totalQuestions: serializer.fromJson<int?>(json['totalQuestions']),
+      updatedAt: serializer.fromJson<DateTime?>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'chapterId': serializer.toJson<String>(chapterId),
+      'readAt': serializer.toJson<DateTime?>(readAt),
+      'bestScore': serializer.toJson<int?>(bestScore),
+      'lastScore': serializer.toJson<int?>(lastScore),
+      'attempts': serializer.toJson<int>(attempts),
+      'totalQuestions': serializer.toJson<int?>(totalQuestions),
+      'updatedAt': serializer.toJson<DateTime?>(updatedAt),
+    };
+  }
+
+  ChapterProgressRow copyWith({
+    String? chapterId,
+    Value<DateTime?> readAt = const Value.absent(),
+    Value<int?> bestScore = const Value.absent(),
+    Value<int?> lastScore = const Value.absent(),
+    int? attempts,
+    Value<int?> totalQuestions = const Value.absent(),
+    Value<DateTime?> updatedAt = const Value.absent(),
+  }) => ChapterProgressRow(
+    chapterId: chapterId ?? this.chapterId,
+    readAt: readAt.present ? readAt.value : this.readAt,
+    bestScore: bestScore.present ? bestScore.value : this.bestScore,
+    lastScore: lastScore.present ? lastScore.value : this.lastScore,
+    attempts: attempts ?? this.attempts,
+    totalQuestions: totalQuestions.present
+        ? totalQuestions.value
+        : this.totalQuestions,
+    updatedAt: updatedAt.present ? updatedAt.value : this.updatedAt,
+  );
+  ChapterProgressRow copyWithCompanion(ChapterProgressEntriesCompanion data) {
+    return ChapterProgressRow(
+      chapterId: data.chapterId.present ? data.chapterId.value : this.chapterId,
+      readAt: data.readAt.present ? data.readAt.value : this.readAt,
+      bestScore: data.bestScore.present ? data.bestScore.value : this.bestScore,
+      lastScore: data.lastScore.present ? data.lastScore.value : this.lastScore,
+      attempts: data.attempts.present ? data.attempts.value : this.attempts,
+      totalQuestions: data.totalQuestions.present
+          ? data.totalQuestions.value
+          : this.totalQuestions,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ChapterProgressRow(')
+          ..write('chapterId: $chapterId, ')
+          ..write('readAt: $readAt, ')
+          ..write('bestScore: $bestScore, ')
+          ..write('lastScore: $lastScore, ')
+          ..write('attempts: $attempts, ')
+          ..write('totalQuestions: $totalQuestions, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    chapterId,
+    readAt,
+    bestScore,
+    lastScore,
+    attempts,
+    totalQuestions,
+    updatedAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is ChapterProgressRow &&
+          other.chapterId == this.chapterId &&
+          other.readAt == this.readAt &&
+          other.bestScore == this.bestScore &&
+          other.lastScore == this.lastScore &&
+          other.attempts == this.attempts &&
+          other.totalQuestions == this.totalQuestions &&
+          other.updatedAt == this.updatedAt);
+}
+
+class ChapterProgressEntriesCompanion
+    extends UpdateCompanion<ChapterProgressRow> {
+  final Value<String> chapterId;
+  final Value<DateTime?> readAt;
+  final Value<int?> bestScore;
+  final Value<int?> lastScore;
+  final Value<int> attempts;
+  final Value<int?> totalQuestions;
+  final Value<DateTime?> updatedAt;
+  final Value<int> rowid;
+  const ChapterProgressEntriesCompanion({
+    this.chapterId = const Value.absent(),
+    this.readAt = const Value.absent(),
+    this.bestScore = const Value.absent(),
+    this.lastScore = const Value.absent(),
+    this.attempts = const Value.absent(),
+    this.totalQuestions = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  ChapterProgressEntriesCompanion.insert({
+    required String chapterId,
+    this.readAt = const Value.absent(),
+    this.bestScore = const Value.absent(),
+    this.lastScore = const Value.absent(),
+    this.attempts = const Value.absent(),
+    this.totalQuestions = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : chapterId = Value(chapterId);
+  static Insertable<ChapterProgressRow> custom({
+    Expression<String>? chapterId,
+    Expression<DateTime>? readAt,
+    Expression<int>? bestScore,
+    Expression<int>? lastScore,
+    Expression<int>? attempts,
+    Expression<int>? totalQuestions,
+    Expression<DateTime>? updatedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (chapterId != null) 'chapter_id': chapterId,
+      if (readAt != null) 'read_at': readAt,
+      if (bestScore != null) 'best_score': bestScore,
+      if (lastScore != null) 'last_score': lastScore,
+      if (attempts != null) 'attempts': attempts,
+      if (totalQuestions != null) 'total_questions': totalQuestions,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  ChapterProgressEntriesCompanion copyWith({
+    Value<String>? chapterId,
+    Value<DateTime?>? readAt,
+    Value<int?>? bestScore,
+    Value<int?>? lastScore,
+    Value<int>? attempts,
+    Value<int?>? totalQuestions,
+    Value<DateTime?>? updatedAt,
+    Value<int>? rowid,
+  }) {
+    return ChapterProgressEntriesCompanion(
+      chapterId: chapterId ?? this.chapterId,
+      readAt: readAt ?? this.readAt,
+      bestScore: bestScore ?? this.bestScore,
+      lastScore: lastScore ?? this.lastScore,
+      attempts: attempts ?? this.attempts,
+      totalQuestions: totalQuestions ?? this.totalQuestions,
+      updatedAt: updatedAt ?? this.updatedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (chapterId.present) {
+      map['chapter_id'] = Variable<String>(chapterId.value);
+    }
+    if (readAt.present) {
+      map['read_at'] = Variable<DateTime>(readAt.value);
+    }
+    if (bestScore.present) {
+      map['best_score'] = Variable<int>(bestScore.value);
+    }
+    if (lastScore.present) {
+      map['last_score'] = Variable<int>(lastScore.value);
+    }
+    if (attempts.present) {
+      map['attempts'] = Variable<int>(attempts.value);
+    }
+    if (totalQuestions.present) {
+      map['total_questions'] = Variable<int>(totalQuestions.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ChapterProgressEntriesCompanion(')
+          ..write('chapterId: $chapterId, ')
+          ..write('readAt: $readAt, ')
+          ..write('bestScore: $bestScore, ')
+          ..write('lastScore: $lastScore, ')
+          ..write('attempts: $attempts, ')
+          ..write('totalQuestions: $totalQuestions, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -3862,9 +5607,21 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $EssaysTable essays = $EssaysTable(this);
   late final $SettingsTable settings = $SettingsTable(this);
   late final $SyncQueueTable syncQueue = $SyncQueueTable(this);
+  late final $NewsItemsTable newsItems = $NewsItemsTable(this);
+  late final $ChaptersTable chapters = $ChaptersTable(this);
+  late final $ChapterProgressEntriesTable chapterProgressEntries =
+      $ChapterProgressEntriesTable(this);
   late final Index contentItemsTopicCode = Index(
     'content_items_topic_code',
     'CREATE INDEX content_items_topic_code ON content_items (topic_code, is_active)',
+  );
+  late final Index newsItemsCategoryPublished = Index(
+    'news_items_category_published',
+    'CREATE INDEX news_items_category_published ON news_items (category, published_at)',
+  );
+  late final Index chaptersTopicPosition = Index(
+    'chapters_topic_position',
+    'CREATE INDEX chapters_topic_position ON chapters (topic_code, position)',
   );
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
@@ -3879,7 +5636,12 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     essays,
     settings,
     syncQueue,
+    newsItems,
+    chapters,
+    chapterProgressEntries,
     contentItemsTopicCode,
+    newsItemsCategoryPublished,
+    chaptersTopicPosition,
   ];
 }
 
@@ -5914,6 +7676,898 @@ typedef $$SyncQueueTableProcessedTableManager =
       SyncQueueRow,
       PrefetchHooks Function()
     >;
+typedef $$NewsItemsTableCreateCompanionBuilder = NewsItemsCompanion Function({
+  required String id,
+  required String category,
+  required String source,
+  required String title,
+  required String summary,
+  required String link,
+  Value<String?> imageUrl,
+  required DateTime publishedAt,
+  required DateTime fetchedAt,
+  Value<int> rowid,
+});
+typedef $$NewsItemsTableUpdateCompanionBuilder = NewsItemsCompanion Function({
+  Value<String> id,
+  Value<String> category,
+  Value<String> source,
+  Value<String> title,
+  Value<String> summary,
+  Value<String> link,
+  Value<String?> imageUrl,
+  Value<DateTime> publishedAt,
+  Value<DateTime> fetchedAt,
+  Value<int> rowid,
+});
+
+class $$NewsItemsTableFilterComposer
+    extends Composer<_$AppDatabase, $NewsItemsTable> {
+  $$NewsItemsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get category => $composableBuilder(
+    column: $table.category,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get source => $composableBuilder(
+    column: $table.source,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get title => $composableBuilder(
+    column: $table.title,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get summary => $composableBuilder(
+    column: $table.summary,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get link => $composableBuilder(
+    column: $table.link,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get imageUrl => $composableBuilder(
+    column: $table.imageUrl,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get publishedAt => $composableBuilder(
+    column: $table.publishedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get fetchedAt => $composableBuilder(
+    column: $table.fetchedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$NewsItemsTableOrderingComposer
+    extends Composer<_$AppDatabase, $NewsItemsTable> {
+  $$NewsItemsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get category => $composableBuilder(
+    column: $table.category,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get source => $composableBuilder(
+    column: $table.source,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get title => $composableBuilder(
+    column: $table.title,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get summary => $composableBuilder(
+    column: $table.summary,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get link => $composableBuilder(
+    column: $table.link,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get imageUrl => $composableBuilder(
+    column: $table.imageUrl,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get publishedAt => $composableBuilder(
+    column: $table.publishedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get fetchedAt => $composableBuilder(
+    column: $table.fetchedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$NewsItemsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $NewsItemsTable> {
+  $$NewsItemsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get category =>
+      $composableBuilder(column: $table.category, builder: (column) => column);
+
+  GeneratedColumn<String> get source =>
+      $composableBuilder(column: $table.source, builder: (column) => column);
+
+  GeneratedColumn<String> get title =>
+      $composableBuilder(column: $table.title, builder: (column) => column);
+
+  GeneratedColumn<String> get summary =>
+      $composableBuilder(column: $table.summary, builder: (column) => column);
+
+  GeneratedColumn<String> get link =>
+      $composableBuilder(column: $table.link, builder: (column) => column);
+
+  GeneratedColumn<String> get imageUrl =>
+      $composableBuilder(column: $table.imageUrl, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get publishedAt => $composableBuilder(
+    column: $table.publishedAt,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get fetchedAt =>
+      $composableBuilder(column: $table.fetchedAt, builder: (column) => column);
+}
+
+class $$NewsItemsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $NewsItemsTable,
+          NewsRow,
+          $$NewsItemsTableFilterComposer,
+          $$NewsItemsTableOrderingComposer,
+          $$NewsItemsTableAnnotationComposer,
+          $$NewsItemsTableCreateCompanionBuilder,
+          $$NewsItemsTableUpdateCompanionBuilder,
+          (NewsRow, BaseReferences<_$AppDatabase, $NewsItemsTable, NewsRow>),
+          NewsRow,
+          PrefetchHooks Function()
+        > {
+  $$NewsItemsTableTableManager(_$AppDatabase db, $NewsItemsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$NewsItemsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$NewsItemsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$NewsItemsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> category = const Value.absent(),
+                Value<String> source = const Value.absent(),
+                Value<String> title = const Value.absent(),
+                Value<String> summary = const Value.absent(),
+                Value<String> link = const Value.absent(),
+                Value<String?> imageUrl = const Value.absent(),
+                Value<DateTime> publishedAt = const Value.absent(),
+                Value<DateTime> fetchedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => NewsItemsCompanion(
+                id: id,
+                category: category,
+                source: source,
+                title: title,
+                summary: summary,
+                link: link,
+                imageUrl: imageUrl,
+                publishedAt: publishedAt,
+                fetchedAt: fetchedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String category,
+                required String source,
+                required String title,
+                required String summary,
+                required String link,
+                Value<String?> imageUrl = const Value.absent(),
+                required DateTime publishedAt,
+                required DateTime fetchedAt,
+                Value<int> rowid = const Value.absent(),
+              }) => NewsItemsCompanion.insert(
+                id: id,
+                category: category,
+                source: source,
+                title: title,
+                summary: summary,
+                link: link,
+                imageUrl: imageUrl,
+                publishedAt: publishedAt,
+                fetchedAt: fetchedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$NewsItemsTable, NewsRow>(table),
+                  BaseReferences<_$AppDatabase, $NewsItemsTable, NewsRow>(
+                    db,
+                    table,
+                    e,
+                  ),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$NewsItemsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $NewsItemsTable,
+      NewsRow,
+      $$NewsItemsTableFilterComposer,
+      $$NewsItemsTableOrderingComposer,
+      $$NewsItemsTableAnnotationComposer,
+      $$NewsItemsTableCreateCompanionBuilder,
+      $$NewsItemsTableUpdateCompanionBuilder,
+      (NewsRow, BaseReferences<_$AppDatabase, $NewsItemsTable, NewsRow>),
+      NewsRow,
+      PrefetchHooks Function()
+    >;
+typedef $$ChaptersTableCreateCompanionBuilder = ChaptersCompanion Function({
+  required String id,
+  required String topicCode,
+  required int position,
+  required String title,
+  required String summary,
+  required String body,
+  Value<String> keyPointsJson,
+  Value<String> quizJson,
+  Value<int> difficulty,
+  Value<String> sourcesJson,
+  Value<bool> isActive,
+  Value<DateTime?> updatedAt,
+  Value<int> rowid,
+});
+typedef $$ChaptersTableUpdateCompanionBuilder = ChaptersCompanion Function({
+  Value<String> id,
+  Value<String> topicCode,
+  Value<int> position,
+  Value<String> title,
+  Value<String> summary,
+  Value<String> body,
+  Value<String> keyPointsJson,
+  Value<String> quizJson,
+  Value<int> difficulty,
+  Value<String> sourcesJson,
+  Value<bool> isActive,
+  Value<DateTime?> updatedAt,
+  Value<int> rowid,
+});
+
+class $$ChaptersTableFilterComposer
+    extends Composer<_$AppDatabase, $ChaptersTable> {
+  $$ChaptersTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get topicCode => $composableBuilder(
+    column: $table.topicCode,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get position => $composableBuilder(
+    column: $table.position,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get title => $composableBuilder(
+    column: $table.title,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get summary => $composableBuilder(
+    column: $table.summary,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get body => $composableBuilder(
+    column: $table.body,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get keyPointsJson => $composableBuilder(
+    column: $table.keyPointsJson,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get quizJson => $composableBuilder(
+    column: $table.quizJson,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get difficulty => $composableBuilder(
+    column: $table.difficulty,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get sourcesJson => $composableBuilder(
+    column: $table.sourcesJson,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get isActive => $composableBuilder(
+    column: $table.isActive,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$ChaptersTableOrderingComposer
+    extends Composer<_$AppDatabase, $ChaptersTable> {
+  $$ChaptersTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get topicCode => $composableBuilder(
+    column: $table.topicCode,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get position => $composableBuilder(
+    column: $table.position,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get title => $composableBuilder(
+    column: $table.title,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get summary => $composableBuilder(
+    column: $table.summary,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get body => $composableBuilder(
+    column: $table.body,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get keyPointsJson => $composableBuilder(
+    column: $table.keyPointsJson,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get quizJson => $composableBuilder(
+    column: $table.quizJson,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get difficulty => $composableBuilder(
+    column: $table.difficulty,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get sourcesJson => $composableBuilder(
+    column: $table.sourcesJson,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get isActive => $composableBuilder(
+    column: $table.isActive,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$ChaptersTableAnnotationComposer
+    extends Composer<_$AppDatabase, $ChaptersTable> {
+  $$ChaptersTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get topicCode =>
+      $composableBuilder(column: $table.topicCode, builder: (column) => column);
+
+  GeneratedColumn<int> get position =>
+      $composableBuilder(column: $table.position, builder: (column) => column);
+
+  GeneratedColumn<String> get title =>
+      $composableBuilder(column: $table.title, builder: (column) => column);
+
+  GeneratedColumn<String> get summary =>
+      $composableBuilder(column: $table.summary, builder: (column) => column);
+
+  GeneratedColumn<String> get body =>
+      $composableBuilder(column: $table.body, builder: (column) => column);
+
+  GeneratedColumn<String> get keyPointsJson => $composableBuilder(
+    column: $table.keyPointsJson,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get quizJson =>
+      $composableBuilder(column: $table.quizJson, builder: (column) => column);
+
+  GeneratedColumn<int> get difficulty => $composableBuilder(
+    column: $table.difficulty,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get sourcesJson => $composableBuilder(
+    column: $table.sourcesJson,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<bool> get isActive =>
+      $composableBuilder(column: $table.isActive, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$ChaptersTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $ChaptersTable,
+          ChapterRow,
+          $$ChaptersTableFilterComposer,
+          $$ChaptersTableOrderingComposer,
+          $$ChaptersTableAnnotationComposer,
+          $$ChaptersTableCreateCompanionBuilder,
+          $$ChaptersTableUpdateCompanionBuilder,
+          (
+            ChapterRow,
+            BaseReferences<_$AppDatabase, $ChaptersTable, ChapterRow>,
+          ),
+          ChapterRow,
+          PrefetchHooks Function()
+        > {
+  $$ChaptersTableTableManager(_$AppDatabase db, $ChaptersTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$ChaptersTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$ChaptersTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$ChaptersTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> topicCode = const Value.absent(),
+                Value<int> position = const Value.absent(),
+                Value<String> title = const Value.absent(),
+                Value<String> summary = const Value.absent(),
+                Value<String> body = const Value.absent(),
+                Value<String> keyPointsJson = const Value.absent(),
+                Value<String> quizJson = const Value.absent(),
+                Value<int> difficulty = const Value.absent(),
+                Value<String> sourcesJson = const Value.absent(),
+                Value<bool> isActive = const Value.absent(),
+                Value<DateTime?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ChaptersCompanion(
+                id: id,
+                topicCode: topicCode,
+                position: position,
+                title: title,
+                summary: summary,
+                body: body,
+                keyPointsJson: keyPointsJson,
+                quizJson: quizJson,
+                difficulty: difficulty,
+                sourcesJson: sourcesJson,
+                isActive: isActive,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String topicCode,
+                required int position,
+                required String title,
+                required String summary,
+                required String body,
+                Value<String> keyPointsJson = const Value.absent(),
+                Value<String> quizJson = const Value.absent(),
+                Value<int> difficulty = const Value.absent(),
+                Value<String> sourcesJson = const Value.absent(),
+                Value<bool> isActive = const Value.absent(),
+                Value<DateTime?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ChaptersCompanion.insert(
+                id: id,
+                topicCode: topicCode,
+                position: position,
+                title: title,
+                summary: summary,
+                body: body,
+                keyPointsJson: keyPointsJson,
+                quizJson: quizJson,
+                difficulty: difficulty,
+                sourcesJson: sourcesJson,
+                isActive: isActive,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$ChaptersTable, ChapterRow>(table),
+                  BaseReferences<_$AppDatabase, $ChaptersTable, ChapterRow>(
+                    db,
+                    table,
+                    e,
+                  ),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$ChaptersTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $ChaptersTable,
+      ChapterRow,
+      $$ChaptersTableFilterComposer,
+      $$ChaptersTableOrderingComposer,
+      $$ChaptersTableAnnotationComposer,
+      $$ChaptersTableCreateCompanionBuilder,
+      $$ChaptersTableUpdateCompanionBuilder,
+      (ChapterRow, BaseReferences<_$AppDatabase, $ChaptersTable, ChapterRow>),
+      ChapterRow,
+      PrefetchHooks Function()
+    >;
+typedef $$ChapterProgressEntriesTableCreateCompanionBuilder =
+    ChapterProgressEntriesCompanion Function({
+      required String chapterId,
+      Value<DateTime?> readAt,
+      Value<int?> bestScore,
+      Value<int?> lastScore,
+      Value<int> attempts,
+      Value<int?> totalQuestions,
+      Value<DateTime?> updatedAt,
+      Value<int> rowid,
+    });
+typedef $$ChapterProgressEntriesTableUpdateCompanionBuilder =
+    ChapterProgressEntriesCompanion Function({
+      Value<String> chapterId,
+      Value<DateTime?> readAt,
+      Value<int?> bestScore,
+      Value<int?> lastScore,
+      Value<int> attempts,
+      Value<int?> totalQuestions,
+      Value<DateTime?> updatedAt,
+      Value<int> rowid,
+    });
+
+class $$ChapterProgressEntriesTableFilterComposer
+    extends Composer<_$AppDatabase, $ChapterProgressEntriesTable> {
+  $$ChapterProgressEntriesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get chapterId => $composableBuilder(
+    column: $table.chapterId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get readAt => $composableBuilder(
+    column: $table.readAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get bestScore => $composableBuilder(
+    column: $table.bestScore,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get lastScore => $composableBuilder(
+    column: $table.lastScore,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get attempts => $composableBuilder(
+    column: $table.attempts,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get totalQuestions => $composableBuilder(
+    column: $table.totalQuestions,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$ChapterProgressEntriesTableOrderingComposer
+    extends Composer<_$AppDatabase, $ChapterProgressEntriesTable> {
+  $$ChapterProgressEntriesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get chapterId => $composableBuilder(
+    column: $table.chapterId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get readAt => $composableBuilder(
+    column: $table.readAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get bestScore => $composableBuilder(
+    column: $table.bestScore,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get lastScore => $composableBuilder(
+    column: $table.lastScore,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get attempts => $composableBuilder(
+    column: $table.attempts,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get totalQuestions => $composableBuilder(
+    column: $table.totalQuestions,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$ChapterProgressEntriesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $ChapterProgressEntriesTable> {
+  $$ChapterProgressEntriesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get chapterId =>
+      $composableBuilder(column: $table.chapterId, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get readAt =>
+      $composableBuilder(column: $table.readAt, builder: (column) => column);
+
+  GeneratedColumn<int> get bestScore =>
+      $composableBuilder(column: $table.bestScore, builder: (column) => column);
+
+  GeneratedColumn<int> get lastScore =>
+      $composableBuilder(column: $table.lastScore, builder: (column) => column);
+
+  GeneratedColumn<int> get attempts =>
+      $composableBuilder(column: $table.attempts, builder: (column) => column);
+
+  GeneratedColumn<int> get totalQuestions => $composableBuilder(
+    column: $table.totalQuestions,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$ChapterProgressEntriesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $ChapterProgressEntriesTable,
+          ChapterProgressRow,
+          $$ChapterProgressEntriesTableFilterComposer,
+          $$ChapterProgressEntriesTableOrderingComposer,
+          $$ChapterProgressEntriesTableAnnotationComposer,
+          $$ChapterProgressEntriesTableCreateCompanionBuilder,
+          $$ChapterProgressEntriesTableUpdateCompanionBuilder,
+          (
+            ChapterProgressRow,
+            BaseReferences<
+              _$AppDatabase,
+              $ChapterProgressEntriesTable,
+              ChapterProgressRow
+            >,
+          ),
+          ChapterProgressRow,
+          PrefetchHooks Function()
+        > {
+  $$ChapterProgressEntriesTableTableManager(
+    _$AppDatabase db,
+    $ChapterProgressEntriesTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$ChapterProgressEntriesTableFilterComposer(
+                $db: db,
+                $table: table,
+              ),
+          createOrderingComposer: () =>
+              $$ChapterProgressEntriesTableOrderingComposer(
+                $db: db,
+                $table: table,
+              ),
+          createComputedFieldComposer: () =>
+              $$ChapterProgressEntriesTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> chapterId = const Value.absent(),
+                Value<DateTime?> readAt = const Value.absent(),
+                Value<int?> bestScore = const Value.absent(),
+                Value<int?> lastScore = const Value.absent(),
+                Value<int> attempts = const Value.absent(),
+                Value<int?> totalQuestions = const Value.absent(),
+                Value<DateTime?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ChapterProgressEntriesCompanion(
+                chapterId: chapterId,
+                readAt: readAt,
+                bestScore: bestScore,
+                lastScore: lastScore,
+                attempts: attempts,
+                totalQuestions: totalQuestions,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String chapterId,
+                Value<DateTime?> readAt = const Value.absent(),
+                Value<int?> bestScore = const Value.absent(),
+                Value<int?> lastScore = const Value.absent(),
+                Value<int> attempts = const Value.absent(),
+                Value<int?> totalQuestions = const Value.absent(),
+                Value<DateTime?> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => ChapterProgressEntriesCompanion.insert(
+                chapterId: chapterId,
+                readAt: readAt,
+                bestScore: bestScore,
+                lastScore: lastScore,
+                attempts: attempts,
+                totalQuestions: totalQuestions,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$ChapterProgressEntriesTable, ChapterProgressRow>(
+                    table,
+                  ),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $ChapterProgressEntriesTable,
+                    ChapterProgressRow
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$ChapterProgressEntriesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $ChapterProgressEntriesTable,
+      ChapterProgressRow,
+      $$ChapterProgressEntriesTableFilterComposer,
+      $$ChapterProgressEntriesTableOrderingComposer,
+      $$ChapterProgressEntriesTableAnnotationComposer,
+      $$ChapterProgressEntriesTableCreateCompanionBuilder,
+      $$ChapterProgressEntriesTableUpdateCompanionBuilder,
+      (
+        ChapterProgressRow,
+        BaseReferences<
+          _$AppDatabase,
+          $ChapterProgressEntriesTable,
+          ChapterProgressRow
+        >,
+      ),
+      ChapterProgressRow,
+      PrefetchHooks Function()
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -5934,4 +8588,13 @@ class $AppDatabaseManager {
       $$SettingsTableTableManager(_db, _db.settings);
   $$SyncQueueTableTableManager get syncQueue =>
       $$SyncQueueTableTableManager(_db, _db.syncQueue);
+  $$NewsItemsTableTableManager get newsItems =>
+      $$NewsItemsTableTableManager(_db, _db.newsItems);
+  $$ChaptersTableTableManager get chapters =>
+      $$ChaptersTableTableManager(_db, _db.chapters);
+  $$ChapterProgressEntriesTableTableManager get chapterProgressEntries =>
+      $$ChapterProgressEntriesTableTableManager(
+        _db,
+        _db.chapterProgressEntries,
+      );
 }

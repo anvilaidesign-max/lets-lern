@@ -30,6 +30,7 @@ class ProgressScreen extends ConsumerWidget {
     final streak = ref.watch(streakProvider);
     final days = ref.watch(itemsByDayProvider).value ?? const {};
     final learned = ref.watch(itemsLearnedProvider).value ?? 0;
+    final chapters = ref.watch(chapterCountsProvider).value;
     final accuracy = ref.watch(topicAccuracyProvider).value ?? const [];
     final essays = ref.watch(essaysProvider).value ?? const [];
     final scores = [for (final e in essays.reversed) if (e.scoreTotal != null) e.scoreTotal!];
@@ -47,6 +48,11 @@ class ProgressScreen extends ConsumerWidget {
               const SizedBox(width: AppSpacing.sm),
               Expanded(child: _Stat(value: '$learned', label: 'Cards learned')),
             ],
+          ),
+          const SizedBox(height: AppSpacing.sm),
+          _Stat(
+            value: chapters == null ? '–' : '${chapters.read} / ${chapters.total}',
+            label: 'Book chapters read',
           ),
           const SectionTitle('Accuracy by topic'),
           if (accuracy.every((a) => a.answered == 0))

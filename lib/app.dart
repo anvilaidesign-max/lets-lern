@@ -76,7 +76,7 @@ class _DailyMindAppState extends ConsumerState<DailyMindApp> with WidgetsBinding
 
     final themeMode = ref.watch(settingsProvider.select((s) => s.themeMode));
     return MaterialApp.router(
-      title: 'Daily Mind',
+      title: 'We Learn',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light(),
       darkTheme: AppTheme.dark(),

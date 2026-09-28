@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+<rect x="0" y="0" width="800" height="450" rx="18" fill="#FFFFFF"/>
+<text x="400" y="38" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="bold" fill="#0F172A" text-anchor="middle">Ohm's law: V = I × R</text>
+<line x1="80" y1="150" x2="180" y2="150" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<path d="M180,150 L190,150 L200.0,138 L220.0,162 L240.0,138 L260.0,162 L280.0,138 L300.0,162 L310,150 L320,150" stroke="#F97316" stroke-width="3.5" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="250" y="190" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="bold" fill="#F97316" text-anchor="middle">R = 470 Ω</text>
+<line x1="320" y1="150" x2="430" y2="150" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<line x1="430" y1="150" x2="430" y2="219" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<circle cx="430" cy="245" r="26" fill="#FFFFFF" stroke="#16A34A" stroke-width="3"/>
+<text x="430" y="253" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" fill="#16A34A" text-anchor="middle">A</text>
+<line x1="430" y1="271" x2="430" y2="390" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<line x1="430" y1="390" x2="80" y2="390" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<line x1="80" y1="390" x2="80" y2="262" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<line x1="56" y1="250" x2="104" y2="250" stroke="#2563EB" stroke-width="5" stroke-linecap="round"/>
+<line x1="66" y1="262" x2="94" y2="262" stroke="#2563EB" stroke-width="5" stroke-linecap="round"/>
+<line x1="80" y1="250" x2="80" y2="150" stroke="#334155" stroke-width="3" stroke-linecap="round"/>
+<text x="40" y="245" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" fill="#2563EB" text-anchor="middle">+</text>
+<text x="40" y="290" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="bold" fill="#2563EB" text-anchor="middle">12 V</text>
+<circle cx="250" cy="88" r="24" fill="#FFFFFF" stroke="#7C3AED" stroke-width="3"/>
+<text x="250" y="96" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" fill="#7C3AED" text-anchor="middle">V</text>
+<line x1="180" y1="150" x2="180" y2="88" stroke="#7C3AED" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="6 6"/>
+<line x1="180" y1="88" x2="226" y2="88" stroke="#7C3AED" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="6 6"/>
+<line x1="320" y1="150" x2="320" y2="88" stroke="#7C3AED" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="6 6"/>
+<line x1="274" y1="88" x2="320" y2="88" stroke="#7C3AED" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="6 6"/>
+<line x1="345" y1="128" x2="388" y2="128" stroke="#DC2626" stroke-width="3" stroke-linecap="round"/><polygon points="400,128 388,134.6 388,121.4" fill="#DC2626" stroke="none" stroke-width="0"/>
+<text x="372" y="118" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#DC2626" text-anchor="middle">I = 25.5 mA</text>
+<text x="255" y="425" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="normal" font-style="italic" fill="#64748B" text-anchor="middle">Ammeter in series · voltmeter in parallel</text>
+<polygon points="630,110 510,320 750,320" fill="#FFEDD5" stroke="#F97316" stroke-width="3"/>
+<line x1="569" y1="216" x2="691" y2="216" stroke="#F97316" stroke-width="3" stroke-linecap="round"/>
+<line x1="630" y1="216" x2="630" y2="320" stroke="#F97316" stroke-width="3" stroke-linecap="round"/>
+<text x="630" y="190" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="bold" fill="#0F172A" text-anchor="middle">V</text>
+<text x="585" y="290" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="bold" fill="#0F172A" text-anchor="middle">I</text>
+<text x="675" y="290" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="bold" fill="#0F172A" text-anchor="middle">R</text>
+<text x="630" y="360" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="normal" fill="#64748B" text-anchor="middle">Cover the one you want:</text>
+<text x="630" y="386" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" fill="#0F172A" text-anchor="middle">V = I × R   I = V ÷ R   R = V ÷ I</text>
+</svg>

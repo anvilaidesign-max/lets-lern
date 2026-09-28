@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+<rect x="0" y="0" width="800" height="450" rx="18" fill="#FFFFFF"/>
+<text x="400" y="38" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="bold" fill="#0F172A" text-anchor="middle">Inside a computer: the CPU cycle and memory</text>
+<circle cx="200" cy="250" r="120" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+<rect x="140" y="100" width="120" height="52" rx="12" fill="#DBEAFE" stroke="#2563EB" stroke-width="2.5"/><text x="200" y="132.5" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="bold" fill="#0F172A" text-anchor="middle">Fetch</text>
+<rect x="250" y="300" width="120" height="52" rx="12" fill="#EDE9FE" stroke="#7C3AED" stroke-width="2.5"/><text x="310" y="332.5" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="bold" fill="#0F172A" text-anchor="middle">Decode</text>
+<rect x="30" y="300" width="120" height="52" rx="12" fill="#FFEDD5" stroke="#F97316" stroke-width="2.5"/><text x="90" y="332.5" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="bold" fill="#0F172A" text-anchor="middle">Execute</text>
+<line x1="265" y1="140" x2="301.94608040864426" y2="280.39510555284824" stroke="#64748B" stroke-width="2.5" stroke-linecap="round"/><polygon points="305,292 295.6,282.1 308.3,278.7" fill="#64748B" stroke="none" stroke-width="0"/>
+<line x1="248" y1="355" x2="164" y2="355" stroke="#64748B" stroke-width="2.5" stroke-linecap="round"/><polygon points="152,355 164,348.4 164,361.6" fill="#64748B" stroke="none" stroke-width="0"/>
+<line x1="95" y1="296" x2="141.1120843015397" y2="161.35271383950402" stroke="#64748B" stroke-width="2.5" stroke-linecap="round"/><polygon points="145,150 147.4,163.5 134.9,159.2" fill="#64748B" stroke="none" stroke-width="0"/>
+<text x="200" y="255" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#64748B" text-anchor="middle">billions of</text>
+<text x="200" y="275" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#64748B" text-anchor="middle">times a second</text>
+<polygon points="590,90 520,180 660,180" fill="#FEE2E2" stroke="#DC2626" stroke-width="2"/>
+<polygon points="520,180 660,180 700,260 480,260" fill="#FFEDD5" stroke="#F97316" stroke-width="2"/>
+<polygon points="480,260 700,260 750,350 430,350" fill="#DCFCE7" stroke="#16A34A" stroke-width="2"/>
+<text x="590" y="162" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#0F172A" text-anchor="middle">registers</text>
+<text x="590" y="176" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="normal" fill="#0F172A" text-anchor="middle">&amp; cache</text>
+<text x="590" y="228" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="bold" fill="#0F172A" text-anchor="middle">RAM</text>
+<text x="590" y="248" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="normal" fill="#64748B" text-anchor="middle">fast, forgets without power</text>
+<text x="590" y="310" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="bold" fill="#0F172A" text-anchor="middle">Storage (SSD)</text>
+<text x="590" y="332" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="normal" fill="#64748B" text-anchor="middle">big, keeps data, slower</text>
+<line x1="770" y1="110" x2="770" y2="328" stroke="#64748B" stroke-width="2" stroke-linecap="round"/><polygon points="770,340 763.4,328 776.6,328" fill="#64748B" stroke="none" stroke-width="0"/>
+<text x="762" y="230" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" fill="#64748B" text-anchor="end">bigger</text>
+<line x1="410" y1="340" x2="410" y2="122" stroke="#64748B" stroke-width="2" stroke-linecap="round"/><polygon points="410,110 416.6,122 403.4,122" fill="#64748B" stroke="none" stroke-width="0"/>
+<text x="402" y="230" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" fill="#64748B" text-anchor="end">faster</text>
+<rect x="160" y="390" width="480" height="44" rx="12" fill="#FEF9C3" stroke="#EAB308" stroke-width="2.5"/>
+<text x="400" y="418" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" fill="#0F172A" text-anchor="middle">1 byte = 8 bits = 256 values · 1011 (binary) = 11</text>
+</svg>

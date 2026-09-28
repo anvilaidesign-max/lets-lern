@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import '../../core/config/legal.dart';
 import '../../core/theme/tokens.dart';
 import '../../data/repositories/auth_repository.dart';
 import '../../data/repositories/settings_repository.dart';
@@ -46,9 +48,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
           child: Column(
             children: [
               const Spacer(),
-              const Text('🧠', style: TextStyle(fontSize: 72)),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(24),
+                child: Image.asset('assets/icon/logo.png', width: 96, height: 96, semanticLabel: 'We Learn logo'),
+              ),
               const SizedBox(height: AppSpacing.lg),
-              Text('Daily Mind', style: theme.textTheme.headlineMedium),
+              Text('We Learn', style: theme.textTheme.headlineMedium),
               const SizedBox(height: AppSpacing.sm),
               Text(
                 'Sign in to keep your progress safe across phones and to use the AI game and essay scoring.',
@@ -80,9 +85,16 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               ],
               const SizedBox(height: AppSpacing.md),
               Text(
-                'You can sign in later from Settings. Progress made offline is kept.',
+                'You can sign in later from Settings. Progress made offline is kept.\nBy continuing you agree to our Terms of use and Privacy policy.',
                 style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant),
                 textAlign: TextAlign.center,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton(onPressed: () => launchUrl(Uri.parse(LegalLinks.terms), mode: LaunchMode.inAppBrowserView), child: const Text('Terms')),
+                  TextButton(onPressed: () => launchUrl(Uri.parse(LegalLinks.privacy), mode: LaunchMode.inAppBrowserView), child: const Text('Privacy')),
+                ],
               ),
             ],
           ),

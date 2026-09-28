@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy · We Learn</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <header><img src="logo.png" alt=""><a href="index.html">We Learn</a></header>
+  <h1>Privacy Policy</h1>
+  <p class="meta">Effective 27 September 2026</p>
+
+  <p>We Learn ("the app", "we") is a learning app made by Bismark Nyota. This policy explains what data the app collects, why, who it is shared with, and how you can delete it. If you have questions, email <a href="mailto:nyotabis@gmail.com">nyotabis@gmail.com</a>.</p>
+
+  <h2>Summary</h2>
+  <div class="box">
+    <ul>
+      <li>You can use the app offline without an account. Nothing leaves your phone until you sign in.</li>
+      <li>If you sign in with Google, we store your name, email address and learning progress so it is backed up and follows you to a new phone.</li>
+      <li>Essay photos and AI tutor messages are sent to our AI provider, DeepSeek, to be read and answered.</li>
+      <li>Screen time data is used only on your phone and is never uploaded.</li>
+      <li>We do not sell your data and we do not show ads.</li>
+      <li>You can delete your account and all its data at any time in the app: Settings &rarr; Delete account.</li>
+    </ul>
+  </div>
+
+  <h2>What we collect and why</h2>
+  <table>
+    <tr><th>Data</th><th>When</th><th>Why</th><th>Where it is stored</th></tr>
+    <tr><td>Name, email address, Google account ID</td><td>When you sign in with Google</td><td>To create your account and keep your progress safe</td><td>Supabase (our backend)</td></tr>
+    <tr><td>Profile: display name, what you study, learning level</td><td>When you fill in your profile</td><td>To greet you and pitch lessons at your level</td><td>On your phone; the display name is also saved to your account when you are signed in</td></tr>
+    <tr><td>Profile picture</td><td>When you choose one</td><td>To show your avatar</td><td>On your phone only. It is never uploaded.</td></tr>
+    <tr><td>Learning progress: cards seen and answered, saved cards, chapters read, quiz scores, daily activity and streak</td><td>As you use the app</td><td>To pick what to show next, keep your streak and sync across phones</td><td>On your phone; copied to your account when you are signed in</td></tr>
+    <tr><td>Content reports</td><td>When you report a card</td><td>To fix wrong or unclear content</td><td>Supabase</td></tr>
+    <tr><td>Essay photos, the text read from them, scores and feedback</td><td>When you submit an essay</td><td>To read your handwriting and score the essay</td><td>Supabase (private storage, only you can access your photos); processed by DeepSeek</td></tr>
+    <tr><td>AI tutor messages and your answers</td><td>When you play the AI tutor</td><td>To run the lesson or quiz</td><td>Supabase; processed by DeepSeek</td></tr>
+    <tr><td>Daily count of AI requests</td><td>When you use AI features</td><td>To apply fair daily limits</td><td>Supabase</td></tr>
+    <tr><td>App usage times (Android, only if you allow "Usage access")</td><td>Every 15 minutes in the background</td><td>To remind you to take a break from your phone</td><td>On your phone only. It is never uploaded.</td></tr>
+  </table>
+  <p>The app also keeps a short technical log (the last 200 lines) on your phone to help with bug reports. It is not sent anywhere unless you choose to share it.</p>
+
+  <h2>Who we share data with</h2>
+  <p>We share data only with the service providers needed to run the app:</p>
+  <ul>
+    <li><strong>Supabase</strong> hosts our database, sign-in and file storage. Your data is stored in Supabase's London (eu-west-2) region.</li>
+    <li><strong>Google</strong> provides Google Sign-In. Google's own privacy policy applies to your Google account.</li>
+    <li><strong>DeepSeek</strong> (an AI company based in China) processes essay photos, essay text and AI tutor messages to produce transcriptions, scores and replies. We do not send your name or email address to DeepSeek. DeepSeek's own privacy policy applies to how it handles this data.</li>
+  </ul>
+  <p><strong>News:</strong> the News tab loads public news feeds directly from publishers such as the BBC, The Herald, NewsDay, TechCrunch and IEEE Spectrum. Like any website, these publishers can see your IP address when the app downloads a feed or when you open an article.</p>
+  <p>We do not sell personal data, use it for advertising, or share it with data brokers.</p>
+
+  <h2>How long we keep data</h2>
+  <p>We keep your account data until you delete your account. When you delete it, your account, progress, essays, essay photos and AI tutor history are deleted from our database immediately. Copies in routine backups expire within 30 days. Data stored only on your phone is removed when you uninstall the app.</p>
+
+  <h2>Security</h2>
+  <p>All connections use encryption (HTTPS). Every table in our database uses row-level security, so each account can only read its own data. Essay photos are kept in a private storage bucket. AI provider keys are kept on our server and never in the app.</p>
+
+  <h2>Your choices and rights</h2>
+  <ul>
+    <li><strong>Use it without an account:</strong> choose "Try offline first".</li>
+    <li><strong>Delete your account:</strong> in the app, go to Settings &rarr; Delete account. You can also <a href="delete-account.html">request deletion without the app</a>.</li>
+    <li><strong>Permissions:</strong> notifications, camera, photos and usage access are all optional. The app works without them, and you can change them in your phone's settings.</li>
+    <li><strong>Access or correct your data:</strong> email us and we will respond within 30 days.</li>
+  </ul>
+
+  <h2>Children</h2>
+  <p>We Learn is made for adults and is not directed to children under 13. We do not knowingly collect personal data from children under 13. If you believe a child has created an account, email us and we will delete it.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>If we change this policy, we will update the date at the top and, for important changes, tell you in the app.</p>
+
+  <h2>Contact</h2>
+  <p>Bismark Nyota, developer of We Learn &middot; <a href="mailto:nyotabis@gmail.com">nyotabis@gmail.com</a></p>
+
+  <nav><a href="index.html">Home</a> &middot; <a href="terms.html">Terms of use</a> &middot; <a href="delete-account.html">Delete your account</a></nav>
+</main>
+</body>
+</html>

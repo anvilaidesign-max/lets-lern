@@ -6,7 +6,7 @@
 // the review step. Needs SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in the
 // environment or in content-pipeline/.env (never commit that file).
 
-import { findDuplicates, loadContent, readEnv, validateItem, withId } from "./lib.ts";
+import { findDuplicates, loadChapters, loadContent, readEnv, validateChapter, validateItem, withId } from "./lib.ts";
 
 const args = new Set(process.argv.slice(2));
 const verified = args.has("--verified");
@@ -14,9 +14,11 @@ const offlinePack = args.has("--offline-pack");
 const dryRun = args.has("--dry-run");
 
 const loaded = loadContent();
+const chapters = loadChapters();
 const problems = [
   ...loaded.flatMap(({ file, index, item }) => validateItem(item, `${file}[${index}]`)),
   ...findDuplicates(loaded),
+  ...chapters.flatMap(validateChapter),
 ];
 if (problems.length > 0) {
   console.error("Validation failed. Run `node scripts/validate.ts` for details.");
@@ -48,7 +50,7 @@ const rows = loaded.map(({ item }) => {
 });
 
 if (dryRun) {
-  console.log(`Dry run: would upsert ${rows.length} items (verified=${verified}, offline_pack=${offlinePack}).`);
+  console.log(`Dry run: would upsert ${rows.length} items and ${chapters.length} chapters (verified=${verified}, offline_pack=${offlinePack}).`);
   process.exit(0);
 }
 
@@ -60,22 +62,30 @@ if (!url || !key) {
   process.exit(1);
 }
 
-for (let i = 0; i < rows.length; i += 200) {
-  const batch = rows.slice(i, i + 200);
-  const res = await fetch(`${url}/rest/v1/content_items?on_conflict=id`, {
-    method: "POST",
-    headers: {
-      apikey: key,
-      Authorization: `Bearer ${key}`,
-      "Content-Type": "application/json",
-      Prefer: "resolution=merge-duplicates,return=minimal",
-    },
-    body: JSON.stringify(batch),
-  });
-  if (!res.ok) {
-    console.error(`Upload failed at batch ${i / 200 + 1}: ${res.status} ${await res.text()}`);
-    process.exit(1);
+async function upsert(table: string, rows: Record<string, unknown>[]): Promise<void> {
+  for (let i = 0; i < rows.length; i += 200) {
+    const batch = rows.slice(i, i + 200);
+    const res = await fetch(`${url}/rest/v1/${table}?on_conflict=id`, {
+      method: "POST",
+      headers: {
+        apikey: key!,
+        Authorization: `Bearer ${key}`,
+        "Content-Type": "application/json",
+        Prefer: "resolution=merge-duplicates,return=minimal",
+      },
+      body: JSON.stringify(batch),
+    });
+    if (!res.ok) {
+      console.error(`Upload to ${table} failed at batch ${i / 200 + 1}: ${res.status} ${await res.text()}`);
+      process.exit(1);
+    }
+    console.log(`${table}: upserted ${Math.min(i + 200, rows.length)} / ${rows.length}`);
   }
-  console.log(`Upserted ${Math.min(i + 200, rows.length)} / ${rows.length}`);
 }
+
+await upsert("content_items", rows);
+await upsert(
+  "chapters",
+  chapters.map(({ file: _file, ...ch }) => ({ ...ch, verified: verified, is_active: true })),
+);
 console.log("Done.");

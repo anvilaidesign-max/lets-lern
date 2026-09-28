@@ -23,7 +23,27 @@ export const TOPIC_NAMES: Record<string, string> = {
   economics: "Economics",
   finance: "Finance",
   relations: "International Relations",
+  tech: "Technology",
+  engineering: "Electronics Engineering",
+  medicine: "Medicine",
+  law: "Law",
+  business: "Business and Startups",
 };
+
+export const LEVELS = ["basics", "mixed", "advanced"] as const;
+export type Level = typeof LEVELS[number];
+
+const LEVEL_RULES: Record<Level, string> = {
+  basics: "Pitch everything at foundation level: plain words, one idea at a time.",
+  mixed: "Mix foundation and intermediate questions, rising in difficulty as the game goes on.",
+  advanced: "Pitch at university level: precise terminology, formulas and worked numbers where relevant, no trivial questions.",
+};
+
+/** Keeps the learner description short and on one line. */
+export function cleanLearner(value: unknown): string {
+  if (typeof value !== "string") return "";
+  return value.replace(/[\r\n"`]+/g, " ").trim().slice(0, 80);
+}
 
 export const GAME_MODES = ["teach", "quiz", "true_false"] as const;
 export type GameMode = typeof GAME_MODES[number];
@@ -65,9 +85,16 @@ const MODE_RULES: Record<GameMode, string> = {
     "then give the next statement in the same message.",
 };
 
-export function buildSystemPrompt(topicName: string, mode: GameMode, answered: number): string {
+export function buildSystemPrompt(
+  topicName: string,
+  mode: GameMode,
+  answered: number,
+  level: Level = "mixed",
+  learner = "",
+): string {
   return `You are a friendly but honest tutor for an adult learner.
 Topic: ${topicName}. Mode: ${mode}.
+${learner ? `About the learner: ${learner}. Use examples that fit this background.\n` : ""}Level: ${level}. ${LEVEL_RULES[level]}
 Keep every message under 80 words.
 Only state facts you are confident are correct. If unsure, say so.
 For politics, be neutral and present facts, not opinions.
@@ -180,9 +207,10 @@ export async function handleAiGameTurn(req: Request, deps: AiGameDeps): Promise<
   }
 
   const topicName = TOPIC_NAMES[session.topic_code] ?? session.topic_code;
+  const level: Level = (LEVELS as readonly string[]).includes(body.level as string) ? body.level as Level : "mixed";
   const content = userMessage === "" ? "Start the game." : userMessage;
   const context: ChatMessage[] = [
-    { role: "system", content: buildSystemPrompt(topicName, session.mode, answered) },
+    { role: "system", content: buildSystemPrompt(topicName, session.mode, answered, level, cleanLearner(body.learner)) },
     ...session.messages.slice(-CONTEXT_MESSAGES),
     { role: "user", content },
   ];

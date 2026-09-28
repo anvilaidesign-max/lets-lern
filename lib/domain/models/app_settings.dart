@@ -34,12 +34,25 @@ class SettingKeys {
   static const screenTimeLastReminderAt = 'screen_time_last_reminder_at';
   static const essayPromptOffset = 'essay_prompt_offset';
   static const completedToday = 'completed_today';
+
+  // Profile (stored on the phone so it shows offline).
+  static const profileName = 'profile_name';
+  static const profileAvatar = 'profile_avatar';
+  static const profileField = 'profile_field';
+  static const learningLevel = 'learning_level';
+  static const profileSyncedName = 'profile_synced_name';
+  static const chaptersSyncedAt = 'chapters_synced_at';
+
+  static String newsRefreshedAt(String category) => 'news_refreshed_$category';
+
+  static String gameBest(String gameId) => 'game_best_$gameId';
 }
 
-/// `topics_per_day`: 1, 2, or random (1 or 2 each day).
+/// `topics_per_day`: 1, 2, 3, or random (1 or 2 each day).
 enum TopicsPerDay {
   one('1'),
   two('2'),
+  three('3'),
   random('random');
 
   const TopicsPerDay(this.storageValue);
@@ -48,13 +61,66 @@ enum TopicsPerDay {
   static TopicsPerDay parse(String? value) => switch (value) {
         '1' => TopicsPerDay.one,
         '2' => TopicsPerDay.two,
+        '3' => TopicsPerDay.three,
         _ => TopicsPerDay.random,
       };
 }
 
+/// Which difficulty of cards to show. Items have difficulty 1 (basic),
+/// 2 (intermediate) or 3 (advanced).
+enum LearningLevel {
+  basics('basics', 'Basics', 'Foundations first'),
+  mixed('mixed', 'Mixed', 'Basics and advanced together'),
+  advanced('advanced', 'Advanced', 'Harder cards, fewer basics');
+
+  const LearningLevel(this.storageValue, this.label, this.description);
+  final String storageValue;
+  final String label;
+  final String description;
+
+  static LearningLevel parse(String? value) =>
+      LearningLevel.values.firstWhere((l) => l.storageValue == value, orElse: () => LearningLevel.mixed);
+
+  bool allows(int difficulty) => switch (this) {
+        LearningLevel.basics => difficulty <= 2,
+        LearningLevel.mixed => true,
+        LearningLevel.advanced => difficulty >= 2,
+      };
+}
+
+/// A profile picture: one of the bundled characters or the user's own photo.
+class ProfileAvatar {
+  const ProfileAvatar._(this.kind, this.path);
+
+  final String kind;
+  final String path;
+
+  static const bundledCount = 24;
+
+  static String assetPath(int index) => 'assets/avatars/avatar_${index.toString().padLeft(2, '0')}.png';
+
+  static ProfileAvatar asset(int index) => ProfileAvatar._('asset', assetPath(index));
+
+  static ProfileAvatar file(String path) => ProfileAvatar._('file', path);
+
+  bool get isAsset => kind == 'asset';
+
+  String get storageValue => '$kind:$path';
+
+  static ProfileAvatar? parse(String? value) {
+    if (value == null) return null;
+    final i = value.indexOf(':');
+    if (i <= 0) return null;
+    final kind = value.substring(0, i);
+    final path = value.substring(i + 1);
+    if (path.isEmpty || (kind != 'asset' && kind != 'file')) return null;
+    return ProfileAvatar._(kind, path);
+  }
+}
+
 class AppSettings {
   const AppSettings({
-    this.themeMode = ThemeMode.system,
+    this.themeMode = ThemeMode.light,
     this.notifIntervalHours = 3,
     this.quietStart = const ClockTime(21, 30),
     this.quietEnd = const ClockTime(7, 0),
@@ -69,6 +135,10 @@ class AppSettings {
     this.lastSyncAt,
     this.onboardingDone = false,
     this.guestMode = false,
+    this.profileName = '',
+    this.profileField = '',
+    this.profileAvatar,
+    this.level = LearningLevel.mixed,
   });
 
   final ThemeMode themeMode;
@@ -88,6 +158,10 @@ class AppSettings {
   final DateTime? lastSyncAt;
   final bool onboardingDone;
   final bool guestMode;
+  final String profileName;
+  final String profileField;
+  final ProfileAvatar? profileAvatar;
+  final LearningLevel level;
 
   List<String> get effectiveTopics {
     final valid = enabledTopics.where(Topic.allCodes.contains).toList();
@@ -122,10 +196,11 @@ class AppSettings {
         .toList();
 
     return AppSettings(
+      // Light is the default; dark and system are opt-in.
       themeMode: switch (map[SettingKeys.themeMode]) {
-        'light' => ThemeMode.light,
         'dark' => ThemeMode.dark,
-        _ => ThemeMode.system,
+        'system' => ThemeMode.system,
+        _ => ThemeMode.light,
       },
       notifIntervalHours: intOr(SettingKeys.notifIntervalHours, 3, min: 2, max: 4),
       quietStart: ClockTime.tryParse(map[SettingKeys.quietStart]) ?? defaults.quietStart,
@@ -141,6 +216,10 @@ class AppSettings {
       lastSyncAt: DateTime.tryParse(map[SettingKeys.lastSyncAt] ?? ''),
       onboardingDone: boolOr(SettingKeys.onboardingDone, false),
       guestMode: boolOr(SettingKeys.guestMode, false),
+      profileName: (map[SettingKeys.profileName] ?? '').trim(),
+      profileField: (map[SettingKeys.profileField] ?? '').trim(),
+      profileAvatar: ProfileAvatar.parse(map[SettingKeys.profileAvatar]),
+      level: LearningLevel.parse(map[SettingKeys.learningLevel]),
     );
   }
 

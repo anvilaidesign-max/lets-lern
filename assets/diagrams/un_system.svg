@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+<rect x="0" y="0" width="800" height="450" rx="18" fill="#FFFFFF"/>
+<text x="400" y="38" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="bold" fill="#0F172A" text-anchor="middle">The United Nations system</text>
+<rect x="40" y="70" width="230" height="100" rx="12" fill="#DBEAFE" stroke="#2563EB" stroke-width="2.5"/><text x="155" y="118" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" fill="#0F172A" text-anchor="middle">General Assembly</text><text x="155" y="142" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#64748B" text-anchor="middle">all 193 members, one vote each</text>
+<rect x="285" y="70" width="230" height="100" rx="12" fill="#FEE2E2" stroke="#DC2626" stroke-width="2.5"/><text x="400" y="118" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" fill="#0F172A" text-anchor="middle">Security Council</text><text x="400" y="142" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#64748B" text-anchor="middle">15 members; can bind states</text>
+<rect x="530" y="70" width="230" height="100" rx="12" fill="#DCFCE7" stroke="#16A34A" stroke-width="2.5"/><text x="645" y="118" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" fill="#0F172A" text-anchor="middle">Secretariat</text><text x="645" y="142" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#64748B" text-anchor="middle">led by the Secretary-General</text>
+<rect x="40" y="190" width="230" height="80" rx="12" fill="#EDE9FE" stroke="#7C3AED" stroke-width="2.5"/><text x="155" y="228" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#0F172A" text-anchor="middle">International Court of Justice</text><text x="155" y="248" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="normal" fill="#64748B" text-anchor="middle">disputes between states</text>
+<rect x="285" y="190" width="230" height="80" rx="12" fill="#CCFBF1" stroke="#0D9488" stroke-width="2.5"/><text x="400" y="228" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" fill="#0F172A" text-anchor="middle">ECOSOC</text><text x="400" y="252" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="normal" fill="#64748B" text-anchor="middle">economic and social work</text>
+<rect x="530" y="190" width="230" height="80" rx="12" fill="#FFEDD5" stroke="#F97316" stroke-width="2.5"/><text x="645" y="228" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" fill="#0F172A" text-anchor="middle">Agencies and funds</text><text x="645" y="250" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="normal" fill="#64748B" text-anchor="middle">WHO, UNICEF, WFP, UNHCR</text>
+<rect x="40" y="292" width="720" height="128" rx="12" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2.5"/>
+<text x="400" y="322" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="bold" fill="#DC2626" text-anchor="middle">Security Council</text>
+<circle cx="110" cy="364" r="26" fill="#FEE2E2" stroke="#DC2626" stroke-width="3"/><text x="110" y="369" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#0F172A" text-anchor="middle">China</text>
+<circle cx="180" cy="364" r="26" fill="#FEE2E2" stroke="#DC2626" stroke-width="3"/><text x="180" y="369" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#0F172A" text-anchor="middle">France</text>
+<circle cx="250" cy="364" r="26" fill="#FEE2E2" stroke="#DC2626" stroke-width="3"/><text x="250" y="369" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#0F172A" text-anchor="middle">Russia</text>
+<circle cx="320" cy="364" r="26" fill="#FEE2E2" stroke="#DC2626" stroke-width="3"/><text x="320" y="369" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#0F172A" text-anchor="middle">UK</text>
+<circle cx="390" cy="364" r="26" fill="#FEE2E2" stroke="#DC2626" stroke-width="3"/><text x="390" y="369" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#0F172A" text-anchor="middle">USA</text>
+<text x="250" y="408" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#DC2626" text-anchor="middle">5 permanent members with a veto</text>
+<circle cx="500" cy="348" r="13" fill="#FFFFFF" stroke="#64748B" stroke-width="2"/>
+<circle cx="544" cy="348" r="13" fill="#FFFFFF" stroke="#64748B" stroke-width="2"/>
+<circle cx="588" cy="348" r="13" fill="#FFFFFF" stroke="#64748B" stroke-width="2"/>
+<circle cx="632" cy="348" r="13" fill="#FFFFFF" stroke="#64748B" stroke-width="2"/>
+<circle cx="676" cy="348" r="13" fill="#FFFFFF" stroke="#64748B" stroke-width="2"/>
+<circle cx="500" cy="382" r="13" fill="#FFFFFF" stroke="#64748B" stroke-width="2"/>
+<circle cx="544" cy="382" r="13" fill="#FFFFFF" stroke="#64748B" stroke-width="2"/>
+<circle cx="588" cy="382" r="13" fill="#FFFFFF" stroke="#64748B" stroke-width="2"/>
+<circle cx="632" cy="382" r="13" fill="#FFFFFF" stroke="#64748B" stroke-width="2"/>
+<circle cx="676" cy="382" r="13" fill="#FFFFFF" stroke="#64748B" stroke-width="2"/>
+<text x="588" y="408" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#64748B" text-anchor="middle">10 elected for 2 years</text>
+</svg>

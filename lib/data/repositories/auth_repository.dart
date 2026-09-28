@@ -7,8 +7,12 @@ import 'package:supabase_flutter/supabase_flutter.dart' show OAuthProvider;
 import '../../core/errors/app_exception.dart';
 import '../../core/utils/logger.dart';
 import '../../core/utils/result.dart';
+import '../../domain/models/app_settings.dart';
+import '../local/database.dart';
 import '../remote/connectivity_service.dart';
+import '../remote/edge_functions_api.dart';
 import '../remote/supabase_service.dart';
+import 'settings_repository.dart';
 
 /// Google sign-in: native Google account picker, then the ID token is
 /// exchanged with Supabase via `signInWithIdToken`.
@@ -59,6 +63,19 @@ class AuthRepository {
           throw AppAuthException('We could not sign you in. Please try again.', e);
         }
       }, context: 'signInWithGoogle');
+
+  /// Deletes the account and all its data on the server (Google Play
+  /// requirement), then clears this phone's copy and signs out.
+  Future<Result<void>> deleteAccount() => Result.guard(() async {
+        await _ref.read(edgeFunctionsApiProvider).call('delete-account', {'confirm': 'DELETE'});
+        await _ref.read(databaseProvider).clearUserData();
+        final settings = _ref.read(settingsProvider.notifier);
+        for (final key in [SettingKeys.localOwnerId, SettingKeys.progressRestoredFor, SettingKeys.completedToday, SettingKeys.profileSyncedName]) {
+          await settings.remove(key);
+        }
+        await signOut();
+        await settings.set(SettingKeys.guestMode, 'false');
+      }, context: 'deleteAccount');
 
   Future<void> signOut() async {
     try {
