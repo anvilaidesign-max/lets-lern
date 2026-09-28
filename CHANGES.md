@@ -33,7 +33,7 @@ Decisions made while building v1, as required by rule 4 of the build spec. Check
 8. **Edge Function tests** run on Node's built-in test runner (`node --test`) because Deno is not installed. Handler logic lives in `_shared/*.ts` with injected dependencies. The same files run on Deno in production.
 9. **Background tasks are Android only in v1.** On iOS, notifications are re-planned on every app open (2 days ahead). iOS "brain breaks" are daily reminders at user-set times (default 11:00, 15:00, 19:00), per section 10.2.
 10. **Supabase is optional at build time.** Without `SUPABASE_URL` the app runs fully offline on the seed pack; sign-in explains that online features are not set up.
-11. **Seed content is reviewed, not machine-checked.** The 329 items were written for this build. Every one passes `validate.ts`: schema, lengths, duplicates, and arithmetic for statements like "7 × 7 = 45". All 154 source links respond (`check-links.ts`). They are marked `verified = true`. A human spot check (section 12.2) is still recommended before a public release.
+11. **Seed content is reviewed, not machine-checked.** The original 329 items were written for this build (554 after round 2, with 446 source links checked). Every one passes `validate.ts`: schema, lengths, duplicates, and arithmetic for statements like "7 × 7 = 45". All 154 source links respond (`check-links.ts`). They are marked `verified = true`. A human spot check (section 12.2) is still recommended before a public release.
 12. **Router tabs.** Bottom navigation has Today, Library, Progress and Settings. Essay, AI game and quick quiz open from Home as full screens.
 13. **No Sentry.** It was optional. `AppLogger` keeps the last 200 log lines (Settings > About) and is the single place to plug Sentry in.
 
@@ -41,3 +41,17 @@ Decisions made while building v1, as required by rule 4 of the build spec. Check
 
 - **The project folder name contains an apostrophe (`lets learn'`).** `flutter test` generates a Dart file that embeds the path in quotes, and it fails to compile. Rename the folder (for example to `lets-learn`) or run through a path without the apostrophe. This build used a junction, `C:\Users\GRACE\dm`.
 - iOS was not built (Windows machine). The iOS setup steps are in README.md.
+
+## Round 2: We Learn (27–28 September 2026)
+
+Changes asked for after testing v1 on a phone.
+
+14. **Renamed to We Learn** with the WL launcher icon (adaptive and monochrome). The Android package stays `com.dailymind.daily_mind` for now; see PLAY_STORE.md before the first upload. Light mode is the default.
+15. **Harder, wider content.** Five new topics (Technology, Electronics Engineering, Medicine, Law, Business & Startups), taking the total to 13. There are now 554 cards: 25 childish ones (times tables and similar) are retired with `is_active: false` rather than deleted, and theorem-level maths, physics, French and theory cards were added. A learning level (basics, mixed, advanced) filters cards by difficulty.
+16. **Topic books.** 52 chapters (`content-pipeline/content/chapters/<topic>/*.md`), each with key points, a 5-question quiz and at least one illustration. The validator requires 3+ chapters per topic, working diagram files, and no nested or unclosed inline markup. The reader supports `**bold**`, `*italic*`, `~~struck~~` and `` `code` ``.
+17. **Illustrations are generated SVG,** not downloaded images. 52 diagrams are drawn in code by `tool/diagrams/*.mjs` (`node tool/diagrams/build.mjs`), so labels stay sharp, they can be fixed in text, and they cost almost nothing in app size.
+18. **Seed pack versioning.** The version is now `YYYYMMDDHHmm`; the old hour precision could skip a pack exported in the same hour. Retired cards ship in the pack marked inactive so phones that already have them switch them off.
+19. **News tab** reads public RSS/Atom feeds straight from publishers (Zimbabwe, world, tech and more), cached for offline reading. No news backend.
+20. **Games** use Kenney.nl CC0 art (`assets/games/LICENSE-kenney.txt`). Avatars are DiceBear CC0 characters bundled in `assets/avatars/`, so they show offline.
+21. **Account deletion** runs through the `delete-account` Edge Function (it requires `{confirm: "DELETE"}`), as Google Play requires. Legal pages live in `docs/` for GitHub Pages.
+22. **Selected tab and chip colours.** The colour scheme now sets `secondaryContainer`/`onSecondaryContainer`. Before, Flutter derived white-on-grey, which made the selected tab icon invisible.
